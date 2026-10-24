@@ -1,0 +1,99 @@
+@import 'tailwindcss';
+
+/*
+ * ERA Beauty design tokens.
+ * Warm ivory base, charcoal for contrast sections, a restrained oxblood accent
+ * and champagne highlights on dark surfaces.
+ */
+@theme {
+  --color-ivory: #f6f1ea;
+  --color-cream: #ede4d8;
+  --color-sand: #d9cbb8;
+  --color-taupe: #a08c7a;
+  --color-mocha: #6e5c4f;
+  --color-ink: #231f1c;
+  --color-ink-soft: #2e2925;
+  --color-oxblood: #6b2a2a;
+  --color-champagne: #cdb38a;
+
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-sans: 'Jost', ui-sans-serif, system-ui, sans-serif;
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-marquee: marquee 38s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ivory font-sans text-ink antialiased;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-oxblood text-ivory;
+  }
+
+  :focus-visible {
+    outline: 1.5px solid var(--color-oxblood);
+    outline-offset: 3px;
+  }
+
+  [data-surface='dark'] :focus-visible {
+    outline-color: var(--color-champagne);
+  }
+
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+}
+
+@layer components {
+  /* Small uppercase label used above headings ("02 — The Institute"). */
+  .eyebrow {
+    @apply font-sans text-[0.7rem] font-normal tracking-[0.32em] uppercase;
+  }
+
+  .display {
+    @apply font-display font-light tracking-[-0.01em];
+  }
+
+  .container-x {
+    @apply mx-auto w-full max-w-[1360px] px-5 sm:px-8 lg:px-12;
+  }
+
+  .arch {
+    border-radius: 999px 999px 0 0;
+  }
+
+  .field {
+    @apply w-full border-0 border-b border-ink/25 bg-transparent px-0 py-3 text-base text-ink placeholder:text-ink/40 transition-colors focus:border-ink focus:outline-none focus:ring-0;
+  }
+}
