@@ -62,6 +62,57 @@
     scroll-margin-top: 4.5rem;
   }
 
+  /* Scrollbars: slim rounded thumb, no arrow buttons. WebKit/Blink get the
+     detailed styling; Firefox falls back to the standard properties. */
+  @supports not selector(::-webkit-scrollbar) {
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-taupe) var(--color-ivory);
+    }
+    [data-surface='dark'] * {
+      scrollbar-color: color-mix(in srgb, var(--color-ivory) 25%, transparent) transparent;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ivory);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-taupe) 70%, transparent);
+    border: 3px solid transparent;
+    border-radius: 999px;
+    background-clip: padding-box;
+    min-height: 48px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-mocha);
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  [data-surface='dark'] ::-webkit-scrollbar {
+    width: 6px;
+  }
+  [data-surface='dark'] ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  [data-surface='dark'] ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-ivory) 22%, transparent);
+    border-width: 1px;
+  }
+  [data-surface='dark'] ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-champagne);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;

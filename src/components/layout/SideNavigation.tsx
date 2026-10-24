@@ -58,7 +58,7 @@ export function SideNavigation({ open, activeId, onClose, onNavigate, onBook }: 
             className="absolute inset-y-0 left-0 flex w-[88vw] max-w-[480px] flex-col overflow-y-auto overscroll-contain bg-ink text-ivory"
           >
             <div className="flex h-[4.5rem] shrink-0 items-center justify-between px-6 sm:px-10">
-              <Wordmark className="items-start" />
+              <Wordmark accentClassName="text-champagne" />
               <button
                 type="button"
                 onClick={onClose}

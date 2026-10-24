@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="32" fill="#2a2522"/><text x="32" y="42" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#f6f1ea">E</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#231f1c"/>
+  <g transform="translate(16 10)" fill="none" stroke="#f6f1ea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.5 43.4V16a12.5 12.5 0 0 1 25 0v27.4"/>
+    <path d="M1 43.4h30"/>
+    <path d="M11.5 19.5v18"/>
+    <path d="M11.5 19.5h9.5v2"/>
+    <path d="M11.5 28.5h6.5"/>
+    <path d="M11.5 37.5h10v-2"/>
+    <path fill="#cdb38a" stroke="none" d="M23 6.6c.35 1.95 1.05 2.65 3 3-1.95.35-2.65 1.05-3 3-.35-1.95-1.05-2.65-3-3 1.95-.35 2.65-1.05 3-3Z"/>
+  </g>
+</svg>

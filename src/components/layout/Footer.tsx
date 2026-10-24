@@ -2,6 +2,7 @@ import { ArrowUp, Facebook, Instagram } from 'lucide-react'
 import { contact, type SocialLink } from '../../data/contact'
 import { navItems, type SectionId } from '../../data/navigation'
 import { site } from '../../data/site'
+import { LogoMark } from './LogoMark'
 
 const socialIcons: Record<SocialLink['label'], typeof Instagram> = {
   Instagram,
@@ -18,7 +19,10 @@ export function Footer({ onNavigate }: FooterProps) {
       <div className="container-x pt-20 pb-10 sm:pt-28">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <p className="display text-[5.5rem] leading-[0.8] tracking-[0.12em] sm:text-[8rem]">ERA</p>
+            <div className="flex items-end gap-6 sm:gap-8">
+              <LogoMark accentClassName="text-champagne" className="h-[5.2rem] w-auto shrink-0 sm:h-[7.4rem]" />
+              <p className="display text-[5.5rem] leading-[0.8] tracking-[0.12em] sm:text-[8rem]">ERA</p>
+            </div>
             <p className="eyebrow mt-4 text-champagne">Beauty Institute</p>
             <p className="mt-8 max-w-sm text-ivory/60">
               A calm, considered space for skin, face and body care. Placeholder brand statement, to be replaced with ERA
