@@ -46,7 +46,12 @@ function Site() {
       >
         Skip to content
       </a>
-      <Header menuOpen={menuOpen} onMenuToggle={() => setMenuOpen((open) => !open)} />
+      <Header
+        menuOpen={menuOpen}
+        activeId={activeId}
+        onMenuToggle={() => setMenuOpen((open) => !open)}
+        onNavigate={navigate}
+      />
       <SideNavigation open={menuOpen} activeId={activeId} onClose={closeMenu} onNavigate={navigate} onBook={bookFromMenu} />
 
       {/* Bottom padding on mobile reserves room for the fixed booking bar. */}
