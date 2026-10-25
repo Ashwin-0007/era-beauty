@@ -3,55 +3,92 @@ import { images } from './images'
 export interface ResultCase {
   id: string
   title: string
-  treatment: string
-  note: string
+  // Identifiant de la prestation (catalog) pour le bouton « Voir la prestation ».
+  categorySlug: string
+  filter: string
+  description: string
+  // Paire de photos réelles avant / après (même cadrage). Une seule photo = rendu simulé.
   before: string
   after: string
-  beforeCondition: string
-  afterCondition: string
-  metric: string
-  beforeFilter?: string
-  afterFilter?: string
+  quote?: string
+  video?: { label: string; image: string; url?: string }
 }
 
-export const results: ResultCase[] = [
+export const resultFilters = ['Tous', 'Rehaussement de cils', 'Brow Lift', 'Soins visage'] as const
+
+export const featuredResults: ResultCase[] = [
   {
-    id: 'radiance',
-    title: 'Éclat & teint',
-    treatment: 'Soin Visage Signature',
-    note: '3 séances sur 6 semaines',
-    before: images.resultFace,
-    after: images.resultFace,
-    beforeCondition: 'Avant le soin · Teint irrégulier & terne',
-    afterCondition: 'Après le protocole · Peau lumineuse effet glass skin',
-    metric: '+94 % de luminosité',
-    beforeFilter: 'brightness(0.88) contrast(0.90) saturate(0.68) sepia(0.14) hue-rotate(-6deg)',
-    afterFilter: 'brightness(1.06) contrast(1.05) saturate(1.16)',
+    id: 'rehaussement',
+    title: 'Rehaussement de cils',
+    categorySlug: 'beaute-du-regard',
+    filter: 'Rehaussement de cils',
+    description: 'Des cils naturellement plus longs, plus courbés et un regard sublimé dès la première séance.',
+    before: images.eyeLashes,
+    after: images.eyeLashes,
+    quote: 'Un résultat incroyable ! Mon regard est plus ouvert et mes cils sont parfaitement courbés.',
+    video: { label: 'Rehaussement de cils', image: images.eyeClosed },
   },
   {
-    id: 'texture',
-    title: 'Affinement du grain',
-    treatment: 'Soins Experts de la Peau',
-    note: 'Éclat immédiat dès la première séance',
-    before: images.resultSkin,
-    after: images.resultSkin,
-    beforeCondition: 'Avant le soin · Grain irrégulier & pores obstrués',
-    afterCondition: 'Après le protocole · Pores affinés & peau nette',
-    metric: '+88 % de douceur cutanée',
-    beforeFilter: 'brightness(0.90) contrast(0.88) saturate(0.70) sepia(0.12)',
-    afterFilter: 'brightness(1.05) contrast(1.08) saturate(1.14)',
+    id: 'brow-lift',
+    title: 'Brow Lift',
+    categorySlug: 'beaute-du-regard',
+    filter: 'Brow Lift',
+    description: 'Des sourcils plus disciplinés, des poils restructurés et un regard intensifié, tout en naturel.',
+    before: images.eyeBrow,
+    after: images.eyeBrow,
   },
   {
-    id: 'glow',
-    title: 'Hydratation & éclat',
-    treatment: 'Soin Hydra Glow',
-    note: 'Effet liftant réparateur après microcourant',
-    before: images.resultPortrait,
-    after: images.resultPortrait,
-    beforeCondition: 'Avant le soin · Déshydratation & fatigue',
-    afterCondition: 'Après le protocole · Peau repulpée & rayonnante',
-    metric: '+98 % de barrière d’hydratation',
-    beforeFilter: 'brightness(0.86) contrast(0.92) saturate(0.65) sepia(0.16)',
-    afterFilter: 'brightness(1.08) contrast(1.04) saturate(1.18)',
+    id: 'soin-visage',
+    title: 'Soin visage signature',
+    categorySlug: 'soins-visage-head-spa',
+    filter: 'Soins visage',
+    description: 'Un teint plus uniforme, une peau hydratée et un éclat retrouvé après une cure de 3 soins.',
+    before: images.facialSkin,
+    after: images.facialSkin,
   },
 ]
+
+export const otherResults: ResultCase[] = [
+  {
+    id: 'teinture',
+    title: 'Teinture cils et sourcils',
+    categorySlug: 'beaute-du-regard',
+    filter: 'Rehaussement de cils',
+    description: '',
+    before: images.browPortrait,
+    after: images.browPortrait,
+  },
+  {
+    id: 'brow-lift-video',
+    title: 'Brow Lift',
+    categorySlug: 'beaute-du-regard',
+    filter: 'Brow Lift',
+    description: '',
+    before: images.browTweezers,
+    after: images.browTweezers,
+    video: { label: 'Résultat en vidéo', image: images.browCare },
+  },
+  {
+    id: 'rehaussement-2',
+    title: 'Rehaussement de cils',
+    categorySlug: 'beaute-du-regard',
+    filter: 'Rehaussement de cils',
+    description: '',
+    before: images.eyeClosed,
+    after: images.eyeClosed,
+  },
+  {
+    id: 'eclat',
+    title: 'Soin hydratant intense',
+    categorySlug: 'soins-visage-head-spa',
+    filter: 'Soins visage',
+    description: '',
+    before: images.portraitSkin,
+    after: images.portraitSkin,
+  },
+]
+
+export const resultQuote = {
+  text: 'J’adore le résultat, mes sourcils sont beaucoup plus nets et mon regard est plus intense.',
+  author: 'Cliente ERA Beauty',
+}

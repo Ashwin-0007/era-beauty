@@ -1,87 +1,42 @@
 import { MotionConfig } from 'motion/react'
-import { useCallback, useState } from 'react'
-import { AppointmentModal } from './components/booking/AppointmentModal'
-import { Footer } from './components/layout/Footer'
-import { Header } from './components/layout/Header'
-import { PersistentBookingCTA } from './components/layout/PersistentBookingCTA'
-import { SideNavigation } from './components/layout/SideNavigation'
-import { AboutSection } from './components/sections/AboutSection'
-import { ClosingCTA } from './components/sections/ClosingCTA'
-import { ContactSection } from './components/sections/ContactSection'
-import { CuratedRitualFinder } from './components/sections/CuratedRitualFinder'
-import { FAQSection } from './components/sections/FAQSection'
-import { HeroSection } from './components/sections/HeroSection'
-import { PricingSection } from './components/sections/PricingSection'
-import { ResultsSection } from './components/sections/ResultsSection'
-import { ServicesSection } from './components/sections/ServicesSection'
-import { TestimonialsSection } from './components/sections/TestimonialsSection'
-import { AmbientLightFollower } from './components/ui/AmbientLightFollower'
-import { FilmGrainOverlay } from './components/ui/FilmGrainOverlay'
-import { BookingProvider, useBooking } from './context/BookingContext'
-import { navItems, type SectionId } from './data/navigation'
-import { useActiveSection } from './hooks/useActiveSection'
-import { scrollToSection } from './lib/navigation'
-
-const sectionIds = navItems.map((item) => item.id)
-
-function Site() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const { openBooking } = useBooking()
-  const activeId = useActiveSection(sectionIds)
-
-  const closeMenu = useCallback(() => setMenuOpen(false), [])
-
-  const navigate = useCallback((id: SectionId) => {
-    setMenuOpen(false)
-    requestAnimationFrame(() => requestAnimationFrame(() => scrollToSection(id)))
-  }, [])
-
-  const bookFromMenu = useCallback(() => {
-    setMenuOpen(false)
-    openBooking()
-  }, [openBooking])
-
-  return (
-    <>
-      <FilmGrainOverlay />
-      <AmbientLightFollower />
-      <a
-        href="#main"
-        className="sr-only z-[70] bg-ink px-4 py-3 text-ivory focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
-      >
-        Aller au contenu
-      </a>
-      <Header menuOpen={menuOpen} onMenuToggle={() => setMenuOpen((open) => !open)} />
-      <SideNavigation open={menuOpen} activeId={activeId} onClose={closeMenu} onNavigate={navigate} onBook={bookFromMenu} />
-
-      <div className="pb-[calc(4.75rem+env(safe-area-inset-bottom))] md:pb-0">
-        <main id="main">
-          <HeroSection />
-          <AboutSection />
-          <ServicesSection />
-          <CuratedRitualFinder />
-          <PricingSection />
-          <ResultsSection />
-          <TestimonialsSection />
-          <ContactSection />
-          <FAQSection />
-          <ClosingCTA />
-        </main>
-        <Footer onNavigate={navigate} />
-      </div>
-
-      <PersistentBookingCTA />
-      <AppointmentModal />
-    </>
-  )
-}
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Layout } from './components/layout/Layout'
+import { BookingProvider } from './context/BookingContext'
+import { ContactPage } from './pages/ContactPage'
+import { FaqPage } from './pages/FaqPage'
+import { HomePage } from './pages/HomePage'
+import { InstitutePage } from './pages/InstitutePage'
+import { LegalPage } from './pages/LegalPage'
+import { NotFoundPage } from './pages/NotFoundPage'
+import { PricingPage } from './pages/PricingPage'
+import { ResultsPage } from './pages/ResultsPage'
+import { ServiceDetailPage } from './pages/ServiceDetailPage'
+import { ServicesPage } from './pages/ServicesPage'
+import { SitemapPage } from './pages/SitemapPage'
 
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <BookingProvider>
-        <Site />
-      </BookingProvider>
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <BookingProvider>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="institut" element={<InstitutePage />} />
+              <Route path="prestations" element={<ServicesPage />} />
+              <Route path="prestations/:slug" element={<ServiceDetailPage />} />
+              <Route path="tarifs" element={<PricingPage />} />
+              <Route path="resultats" element={<ResultsPage />} />
+              <Route path="faq" element={<FaqPage />} />
+              <Route path="contact" element={<ContactPage />} />
+              <Route path="mentions-legales" element={<LegalPage kind="mentions" />} />
+              <Route path="politique-de-confidentialite" element={<LegalPage kind="confidentialite" />} />
+              <Route path="plan-du-site" element={<SitemapPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </BookingProvider>
+      </BrowserRouter>
     </MotionConfig>
   )
 }

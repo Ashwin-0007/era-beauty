@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react'
+import { site } from '../data/site'
 
 interface BookingContextValue {
   isOpen: boolean
@@ -14,6 +15,12 @@ export function BookingProvider({ children }: { children: ReactNode }) {
   const [serviceId, setServiceId] = useState('')
 
   const openBooking = useCallback((id = '') => {
+    if (site.bookingUrl) {
+      const url = new URL(site.bookingUrl)
+      if (id) url.searchParams.set('prestation', id)
+      window.open(url.toString(), '_blank', 'noopener')
+      return
+    }
     setServiceId(id)
     setIsOpen(true)
   }, [])

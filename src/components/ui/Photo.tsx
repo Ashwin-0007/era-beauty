@@ -1,5 +1,5 @@
 import { motion, type MotionValue } from 'motion/react'
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { luxeEase } from '../../lib/motion'
 
 interface PhotoProps {
@@ -11,6 +11,7 @@ interface PhotoProps {
   parallaxY?: MotionValue<string>
   eager?: boolean
   curtainClassName?: string
+  children?: ReactNode
 }
 
 export function Photo({
@@ -22,6 +23,7 @@ export function Photo({
   parallaxY,
   eager = false,
   curtainClassName = 'bg-cream',
+  children,
 }: PhotoProps) {
   const [failed, setFailed] = useState(false)
 
@@ -43,9 +45,10 @@ export function Photo({
           whileInView={reveal ? { scale: 1 } : undefined}
           viewport={{ once: true, margin: '0px 0px -10% 0px' }}
           transition={{ duration: 1.8, ease: luxeEase }}
-          className={`absolute w-full object-cover ${parallaxY ? 'inset-x-0 -top-[10%] h-[120%]' : 'inset-0 h-full'} ${imgClassName}`}
+          className={`photo-warm absolute w-full object-cover ${parallaxY ? 'inset-x-0 -top-[10%] h-[120%]' : 'inset-0 h-full'} ${imgClassName}`}
         />
       )}
+      {children}
       {reveal && (
         <motion.div
           aria-hidden

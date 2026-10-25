@@ -1,19 +1,113 @@
-export type SectionId = 'home' | 'institute' | 'services' | 'pricing' | 'results' | 'chronicles' | 'contact' | 'faq'
+import { activeCategories, categoryPath } from './catalog'
+import { images } from './images'
 
-export interface NavItem {
-  id: SectionId
+export interface NavLink {
   label: string
-  caption: string
-  href: `#${SectionId}`
+  to: string
+}
+
+export interface NavItem extends NavLink {
+  children?: NavLink[]
+  panel?: { image: string; eyebrow: string; title: string; text: string; cta: NavLink }
 }
 
 export const navItems: NavItem[] = [
-  { id: 'home', label: 'Accueil', caption: 'Bienvenue', href: '#home' },
-  { id: 'institute', label: 'L’Institut', caption: 'À propos', href: '#institute' },
-  { id: 'services', label: 'Soins', caption: 'Nos prestations', href: '#services' },
-  { id: 'pricing', label: 'Tarifs', caption: 'Carte & prix', href: '#pricing' },
-  { id: 'results', label: 'Résultats', caption: 'Avant & après', href: '#results' },
-  { id: 'chronicles', label: 'Témoignages', caption: 'Paroles de clientes', href: '#chronicles' },
-  { id: 'contact', label: 'Contact & Accès', caption: 'Nous rendre visite', href: '#contact' },
-  { id: 'faq', label: 'FAQ', caption: 'Bon à savoir', href: '#faq' },
+  { label: 'Accueil', to: '/' },
+  {
+    label: 'L’institut',
+    to: '/institut',
+    children: [
+      { label: 'Présentation', to: '/institut#presentation' },
+      { label: 'Notre équipe', to: '/institut#equipe' },
+      { label: 'Nos valeurs', to: '/institut#valeurs' },
+      { label: 'Le lieu', to: '/institut#lieu' },
+    ],
+    panel: {
+      image: images.instituteRoom,
+      eyebrow: 'L’institut',
+      title: 'Bien plus qu’un institut, une expérience.',
+      text: 'Découvrez notre histoire, notre équipe et nos valeurs.',
+      cta: { label: 'Découvrir l’institut', to: '/institut' },
+    },
+  },
+  {
+    label: 'Prestations',
+    to: '/prestations',
+    children: activeCategories.map((category) => ({ label: category.menuLabel, to: categoryPath(category.slug) })),
+    panel: {
+      image: images.facialMassage,
+      eyebrow: 'Nos prestations',
+      title: 'Des soins d’exception pour révéler votre beauté.',
+      text: 'Une expertise globale pour prendre soin de vous.',
+      cta: { label: 'Toutes les prestations', to: '/prestations' },
+    },
+  },
+  {
+    label: 'Tarifs',
+    to: '/tarifs',
+    children: [
+      ...activeCategories.map((category) => ({ label: category.menuLabel, to: `/tarifs#${category.slug}` })),
+      { label: 'Nos packs', to: '/tarifs#packs' },
+    ],
+    panel: {
+      image: images.instituteTable,
+      eyebrow: 'Nos tarifs',
+      title: 'Des prestations accessibles pour toutes.',
+      text: 'Des tarifs clairs, à la séance ou en forfait.',
+      cta: { label: 'Voir tous les tarifs', to: '/tarifs' },
+    },
+  },
+  {
+    label: 'Résultats',
+    to: '/resultats',
+    children: [
+      { label: 'Avant / après', to: '/resultats#avant-apres' },
+      { label: 'Avis clients', to: '/resultats#avis' },
+      { label: 'Témoignages', to: '/resultats#temoignages' },
+    ],
+    panel: {
+      image: images.smile,
+      eyebrow: 'Des résultats réels',
+      title: 'Des peaux plus nettes, plus lumineuses.',
+      text: 'Découvrez les transformations réalisées dans notre institut.',
+      cta: { label: 'Découvrir les résultats', to: '/resultats' },
+    },
+  },
+  { label: 'FAQ', to: '/faq' },
+  { label: 'Contact', to: '/contact' },
+]
+
+export const footerColumns: { title: string; links: NavLink[] }[] = [
+  {
+    title: 'Liens rapides',
+    links: [
+      { label: 'Accueil', to: '/' },
+      { label: 'L’institut', to: '/institut' },
+      { label: 'Nos prestations', to: '/prestations' },
+      { label: 'Tarifs', to: '/tarifs' },
+      { label: 'Résultats', to: '/resultats' },
+      { label: 'FAQ', to: '/faq' },
+      { label: 'Nous contacter', to: '/contact' },
+    ],
+  },
+  {
+    title: 'Nos prestations',
+    links: activeCategories.map((category) => ({ label: category.menuLabel, to: categoryPath(category.slug) })),
+  },
+  {
+    title: 'Informations',
+    links: [
+      { label: 'Adresse de l’institut', to: '/contact#localisation' },
+      { label: 'Horaires d’ouverture', to: '/contact#horaires' },
+      { label: 'Prendre rendez-vous', to: '#rendez-vous' },
+      { label: 'Nous contacter', to: '/contact#formulaire' },
+    ],
+  },
+]
+
+export const legalLinks: NavLink[] = [
+  { label: 'Mentions légales', to: '/mentions-legales' },
+  { label: 'Politique de confidentialité', to: '/politique-de-confidentialite' },
+  { label: 'Gestion des cookies', to: '#cookies' },
+  { label: 'Plan du site', to: '/plan-du-site' },
 ]

@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { AlertCircle, ArrowRight, Check, ChevronDown, Loader2 } from 'lucide-react'
 import { useRef, useState, type ChangeEvent, type FormEvent, type ReactNode } from 'react'
-import { services } from '../../data/services'
+import { activeCategories, findTreatment } from '../../data/catalog'
 import {
   emptyRequest,
   submitAppointmentRequest,
@@ -97,7 +97,7 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
   }
 
   if (status === 'success') {
-    const service = services.find((s) => s.id === values.serviceId)
+    const service = findTreatment(values.serviceId)
     return (
       <motion.div
         role="status"
@@ -111,7 +111,7 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
         </span>
         <p className="display mt-6 text-3xl">Merci, {values.name.trim().split(' ')[0]}.</p>
         <p className="mt-3 text-ink/70">
-          Votre demande pour <strong className="font-normal text-ink">{service?.title ?? 'un soin'}</strong> le{' '}
+          Votre demande pour <strong className="font-normal text-ink">{service?.name ?? 'une consultation'}</strong> le{' '}
           <strong className="font-normal text-ink">{new Date(`${values.date}T00:00`).toLocaleDateString('fr-FR', { dateStyle: 'long' })}</strong>{' '}
           a bien été préparée.
         </p>
@@ -182,10 +182,14 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
           aria-describedby={describedBy('serviceId')}
         >
           <option value="">Choisir un soin</option>
-          {services.map((service) => (
-            <option key={service.id} value={service.id}>
-              {service.title}
-            </option>
+          {activeCategories.map((category) => (
+            <optgroup key={category.slug} label={category.shortName}>
+              {category.treatments.map((treatment) => (
+                <option key={treatment.id} value={treatment.id}>
+                  {treatment.name}
+                </option>
+              ))}
+            </optgroup>
           ))}
           <option value="consultation">Je ne sais pas encore — consultation</option>
         </select></SelectWrap>

@@ -1,224 +1,194 @@
-import { useState, type FormEvent } from 'react'
-import { ArrowUp, Facebook, Instagram, Sparkles, Check, ArrowRight, MapPin, Phone, Mail, Clock, ShieldCheck } from 'lucide-react'
-import { contact, type SocialLink } from '../../data/contact'
-import { navItems, type SectionId } from '../../data/navigation'
+import { ArrowRight, CalendarDays, Check, Clock, Loader2, Mail, MapPin, Plus } from 'lucide-react'
+import { useId, useState, type FormEvent, type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
+import { useBooking } from '../../context/BookingContext'
+import { footerColumns, legalLinks, type NavLink } from '../../data/navigation'
 import { site } from '../../data/site'
-import { Button } from '../ui/Button'
-import { LogoMark } from './LogoMark'
+import { isEmail, submitForm } from '../../lib/forms'
+import { SocialIcons } from '../ui/SocialIcons'
+import { openCookieSettings } from '../../lib/cookies'
+import { Wordmark } from './Header'
 
-const socialIcons: Record<SocialLink['label'], typeof Instagram> = {
-  Instagram,
-  Facebook,
+const infoIcons = [MapPin, Clock, CalendarDays, Mail]
+
+function FooterLink({ link, icon }: { link: NavLink; icon?: ReactNode }) {
+  const { openBooking } = useBooking()
+  const className = 'inline-flex items-center gap-2.5 text-sm text-ivory/75 transition-colors hover:text-ivory'
+  if (link.to === '#rendez-vous' || link.to === '#cookies') {
+    return (
+      <button type="button" className={className} onClick={() => (link.to === '#cookies' ? openCookieSettings() : openBooking())}>
+        {icon}
+        {link.label}
+      </button>
+    )
+  }
+  return (
+    <Link to={link.to} className={className}>
+      {icon}
+      {link.label}
+    </Link>
+  )
 }
 
-interface FooterProps {
-  onNavigate: (id: SectionId) => void
-}
-
-export function Footer({ onNavigate }: FooterProps) {
-  const [subscribed, setSubscribed] = useState(false)
+function Newsletter() {
+  const inputId = useId()
   const [email, setEmail] = useState('')
+  const [consent, setConsent] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
+  const [error, setError] = useState('')
 
-  const handleSubscribe = (e: FormEvent) => {
-    e.preventDefault()
-    if (!email) return
-    setSubscribed(true)
+  const onSubmit = async (event: FormEvent) => {
+    event.preventDefault()
+    if (!isEmail(email)) return setError('Veuillez saisir une adresse e-mail valide.')
+    if (!consent) return setError('Veuillez accepter de recevoir nos communications.')
+    setError('')
+    setStatus('sending')
+    try {
+      await submitForm(site.newsletterEndpoint, { email, consent })
+      setStatus('done')
+    } catch {
+      setStatus('error')
+      setError('Une erreur est survenue. Veuillez réessayer.')
+    }
+  }
+
+  if (status === 'done') {
+    return (
+      <p role="status" className="flex items-start gap-3 text-sm text-ivory/85">
+        <Check size={18} className="mt-0.5 shrink-0 text-champagne" /> Merci ! Votre inscription à notre newsletter est confirmée.
+      </p>
+    )
   }
 
   return (
-    <footer data-surface="dark" className="relative bg-ink text-ivory overflow-hidden border-t border-ivory/10">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute bottom-0 left-1/4 h-[550px] w-[550px] rounded-full bg-oxblood/10 blur-[140px]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-12 right-10 h-[400px] w-[400px] rounded-full bg-sand/10 blur-[120px]"
-      />
+    <form onSubmit={onSubmit} noValidate>
+      <div className="flex overflow-hidden rounded-full bg-ivory">
+        <label htmlFor={inputId} className="sr-only">
+          Votre adresse e-mail
+        </label>
+        <input
+          id={inputId}
+          type="email"
+          autoComplete="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          placeholder="Votre adresse e-mail"
+          className="min-w-0 flex-1 bg-transparent px-5 py-3 text-sm text-ink placeholder:text-ink/45 focus:outline-none"
+        />
+        <button type="submit" aria-label="S’inscrire à la newsletter" className="m-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-oxblood text-ivory hover:bg-bordeaux-deep">
+          {status === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <ArrowRight size={16} />}
+        </button>
+      </div>
+      <label className="mt-3 flex cursor-pointer items-start gap-2.5 text-xs leading-relaxed text-ivory/65">
+        <input type="checkbox" checked={consent} onChange={(event) => setConsent(event.target.checked)} className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-champagne" />
+        J’accepte de recevoir les communications d’ERA Beauty.
+      </label>
+      {error && (
+        <p role="alert" className="mt-2 text-xs text-champagne">
+          {error}
+        </p>
+      )}
+    </form>
+  )
+}
 
-      <div className="container-x pt-16 pb-12 sm:pt-20 sm:pb-16 relative">
-        <div className="glass-dark shimmer-hover rounded-3xl p-8 sm:p-12 mb-16 border border-oxblood/20 shadow-luxe-lg relative overflow-hidden">
-          <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-champagne/30 bg-ivory/5 px-3.5 py-1 text-xs text-champagne mb-3">
-                <Sparkles size={13} className="text-champagne" />
-                <span className="eyebrow tracking-[0.25em] text-champagne font-normal">
-                  La Gazette de l’Atelier
-                </span>
-              </div>
-              <h3 className="display text-3xl sm:text-4xl text-ivory leading-tight">
-                Invitations privées &amp; <em className="gold-foil-text font-normal italic">Chroniques de la peau</em>
-              </h3>
-              <p className="mt-3 text-sm sm:text-base text-ivory/70 max-w-md leading-relaxed">
-                Recevez en avant-première nos protocoles de saison, nos réservations privées et nos conseils dermatologiques directement dans votre boîte mail.
-              </p>
-            </div>
+function MobileSection({ title, children }: { title: string; children: ReactNode }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="border-b border-ivory/15">
+      <button type="button" aria-expanded={open} onClick={() => setOpen(!open)} className="flex w-full items-center justify-between py-4 text-sm">
+        {title}
+        <Plus aria-hidden size={16} className={`transition-transform ${open ? 'rotate-45' : ''}`} />
+      </button>
+      {open && <div className="pb-5">{children}</div>}
+    </div>
+  )
+}
 
-            <div className="lg:col-span-6">
-              {subscribed ? (
-                <div className="glass-pill rounded-2xl p-6 text-center sm:text-left flex items-center gap-4 border border-champagne/40 bg-ivory/10 shadow-glow-rose">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-oxblood text-ivory shadow-md">
-                    <Check size={20} strokeWidth={2} />
-                  </div>
-                  <div>
-                    <h4 className="font-display text-lg text-ivory font-medium">Bienvenue dans le Cercle de l’Atelier</h4>
-                    <p className="text-xs text-ivory/65 mt-0.5">Votre adresse e-mail a bien été enregistrée dans notre registre privé.</p>
-                  </div>
-                </div>
-              ) : (
-                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    placeholder="Saisissez votre adresse e-mail"
-                    className="flex-1 rounded-full border border-ivory/20 bg-ivory/5 px-6 py-3.5 text-sm text-ivory placeholder:text-ivory/40 focus:border-oxblood focus:outline-none focus:ring-1 focus:ring-oxblood transition-all"
-                  />
-                  <Button
-                    type="submit"
-                    variant="light"
-                    size="md"
-                    icon={<ArrowRight size={14} strokeWidth={1.8} />}
-                    className="shadow-luxe px-7 shrink-0 whitespace-nowrap"
-                  >
-                    S’abonner
-                  </Button>
-                </form>
-              )}
-            </div>
-          </div>
-        </div>
+const Bottom = () => (
+  <div className="flex flex-col gap-4 border-t border-ivory/15 py-6 text-xs text-ivory/60 md:flex-row md:items-center md:justify-between">
+    <p>© {new Date().getFullYear()} ERA Beauty. Tous droits réservés.</p>
+    <ul className="flex flex-wrap gap-x-5 gap-y-2">
+      {legalLinks.map((link) => (
+        <li key={link.label}>
+          <FooterLink link={link} />
+        </li>
+      ))}
+    </ul>
+  </div>
+)
 
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-5">
-            <div className="flex items-end gap-5 sm:gap-7">
-              <LogoMark accentClassName="text-champagne" className="h-[4.8rem] w-auto shrink-0 sm:h-[6.5rem]" />
-              <div>
-                <p className="display text-[4.5rem] leading-[0.8] tracking-[0.12em] sm:text-[6.5rem]">ERA</p>
-                <p className="eyebrow mt-1 text-champagne tracking-[0.34em]">Institut de Beauté</p>
-              </div>
-            </div>
-            
-            <p className="mt-7 max-w-md text-ivory/70 leading-relaxed text-sm sm:text-base">
-              Un sanctuaire paisible et architectural dédié aux rituels de la peau, du visage et du corps. Ancré dans la science cellulaire, la discrétion et la beauté naturelle.
+export function Footer() {
+  const [quick, services, info] = footerColumns
+  const linkList = (links: NavLink[], icons = false) => (
+    <ul className="space-y-2.5">
+      {links.map((link, index) => {
+        const Icon = infoIcons[index]
+        return (
+          <li key={link.label}>
+            <FooterLink link={link} icon={icons && Icon ? <Icon aria-hidden size={14} strokeWidth={1.4} /> : undefined} />
+          </li>
+        )
+      })}
+    </ul>
+  )
+
+  const brand = (
+    <>
+      <Link to="/" aria-label="ERA Beauty — accueil">
+        <Wordmark className="text-[1.9rem]" />
+      </Link>
+      <p className="eyebrow mt-2 text-[0.58rem] text-ivory/70">{site.motto}</p>
+    </>
+  )
+
+  return (
+    <footer data-surface="dark" className="bg-bordeaux-deep text-ivory">
+      <div className="container-x hidden pt-16 md:block">
+        <div className="grid gap-10 pb-12 lg:grid-cols-[1.25fr_0.75fr_0.95fr_0.95fr_1.4fr]">
+          <div>
+            {brand}
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-ivory/70">
+              Un institut dédié à votre beauté, dans un cadre élégant et bienveillant. Des prestations haut de gamme, pour révéler votre confiance au
+              quotidien.
             </p>
-
-            <div className="mt-8 flex flex-wrap gap-2.5">
-              <span className="group rounded-full bg-cream px-3.5 py-1.5 text-[0.7rem] tracking-wider uppercase text-ink font-medium flex items-center gap-2 border border-sand/50 shadow-sm transition-all duration-300 hover:bg-oxblood hover:border-oxblood hover:shadow-glow-rose cursor-default">
-                <ShieldCheck size={13} className="text-oxblood shrink-0 transition-colors group-hover:text-ivory" />
-                <span className="text-ink transition-colors group-hover:text-ivory">Expertise dermatologique certifiée</span>
-              </span>
-              <span className="group rounded-full bg-cream px-3.5 py-1.5 text-[0.7rem] tracking-wider uppercase text-ink font-medium flex items-center gap-2 border border-sand/50 shadow-sm transition-all duration-300 hover:bg-oxblood hover:border-oxblood hover:shadow-glow-rose cursor-default">
-                <Sparkles size={13} className="text-oxblood shrink-0 transition-colors group-hover:text-ivory" />
-                <span className="text-ink transition-colors group-hover:text-ivory">Protocole en salon privé</span>
-              </span>
-            </div>
+            <SocialIcons className="mt-5 -ml-2" linkClassName="text-ivory/80 hover:bg-ivory/10 hover:text-ivory" />
           </div>
-
-          <nav aria-label="Navigation du pied de page" className="lg:col-span-3">
-            <p className="eyebrow text-champagne/90 tracking-[0.28em]">01 · Navigation</p>
-            <ul className="mt-6 space-y-3.5">
-              {navItems.map((nav) => (
-                <li key={nav.id}>
-                  <a
-                    href={nav.href}
-                    onClick={(event) => {
-                      event.preventDefault()
-                      onNavigate(nav.id)
-                    }}
-                    className="group inline-flex items-center gap-2.5 text-sm text-ivory/75 transition-all duration-300 hover:text-champagne hover:translate-x-1"
-                  >
-                    <span className="h-1 w-1 rounded-full bg-oxblood opacity-0 transition-all duration-300 group-hover:w-2 group-hover:opacity-100" />
-                    <span>{nav.label}</span>
-                    <span className="text-[0.7rem] text-ivory/35 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      ({nav.caption})
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+          {[quick, services].map((column) => (
+            <nav key={column.title} aria-label={column.title}>
+              <p className="eyebrow mb-5 text-[0.62rem] text-ivory">{column.title}</p>
+              {linkList(column.links)}
+            </nav>
+          ))}
+          <nav aria-label={info.title}>
+            <p className="eyebrow mb-5 text-[0.62rem] text-ivory">{info.title}</p>
+            {linkList(info.links, true)}
           </nav>
-
-          <div className="lg:col-span-4">
-            <p className="eyebrow text-champagne/90 tracking-[0.28em]">02 · Conciergerie &amp; Visite</p>
-            <div className="glass-dark rounded-2xl p-6 mt-6 border border-ivory/10 space-y-4">
-              <div className="flex items-start gap-3 text-sm text-ivory/80">
-                <MapPin size={16} className="text-oxblood shrink-0 mt-0.5" />
-                <address className="not-italic leading-relaxed">
-                  {contact.addressLines.map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
-                  ))}
-                </address>
-              </div>
-
-              <div className="flex items-center gap-3 text-sm text-ivory/80 border-t border-ivory/10 pt-3">
-                <Phone size={15} className="text-oxblood shrink-0" />
-                <a
-                  href={contact.phoneHref}
-                  className="transition-colors hover:text-champagne"
-                >
-                  {contact.phoneDisplay}
-                </a>
-              </div>
-
-              <div className="flex items-center gap-3 text-sm text-ivory/80">
-                <Mail size={15} className="text-oxblood shrink-0" />
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="transition-colors hover:text-champagne"
-                >
-                  {contact.email}
-                </a>
-              </div>
-
-              <div className="flex items-center gap-3 text-xs text-ivory/55 border-t border-ivory/10 pt-3">
-                <Clock size={14} className="text-champagne shrink-0" />
-                <span>Lun–Sam 9h00 — 19h30 • Horaires des salons privés</span>
-              </div>
-            </div>
-
-            <div className="mt-6 flex items-center gap-3">
-              <span className="eyebrow text-[0.65rem] text-ivory/45">Suivez-nous</span>
-              <ul className="flex gap-2.5">
-                {contact.socials.map((social) => {
-                  const Icon = socialIcons[social.label]
-                  return (
-                    <li key={social.label}>
-                      <a
-                        href={social.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`ERA Beauty sur ${social.label}`}
-                        className="flex h-10 w-10 items-center justify-center rounded-full border border-ivory/15 bg-ivory/5 text-ivory/80 transition-all duration-300 hover:border-oxblood hover:bg-oxblood hover:text-ivory hover:shadow-glow-rose hover:scale-110"
-                      >
-                        <Icon size={16} strokeWidth={1.4} />
-                      </a>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
+          <div>
+            <p className="eyebrow mb-3 text-[0.62rem] text-ivory">Rejoignez notre univers</p>
+            <p className="mb-5 text-sm leading-relaxed text-ivory/70">Recevez nos actualités, offres exclusives et conseils beauté.</p>
+            <Newsletter />
           </div>
         </div>
+        <Bottom />
+      </div>
 
-        <div className="mt-16 flex flex-col-reverse gap-6 border-t border-ivory/10 pt-8 text-xs text-ivory/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} {site.name}. Tous droits réservés. Haute Parfumerie &amp; Atelier d’Esthétique Clinique.
-          </p>
-
-          <button
-            type="button"
-            onClick={() => onNavigate('home')}
-            className="group inline-flex items-center gap-3 self-start rounded-full bg-cream px-5 py-2.5 uppercase tracking-[0.22em] text-ink text-xs font-medium border border-sand/50 shadow-luxe transition-all duration-300 hover:bg-oxblood hover:border-oxblood hover:shadow-glow-rose hover:scale-105 sm:self-auto"
-          >
-            <span className="text-ink font-medium transition-colors group-hover:text-ivory">Retour en haut</span>
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-ivory transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-ivory group-hover:text-ink">
-              <ArrowUp size={13} strokeWidth={2} />
-            </span>
-          </button>
+      <div className="px-6 pt-12 md:hidden">
+        <div className="text-center">
+          {brand}
+          <SocialIcons className="mt-5 justify-center" linkClassName="text-ivory/80 hover:bg-ivory/10" />
+        </div>
+        <div className="mt-8 border-t border-ivory/15">
+          <MobileSection title={quick.title}>{linkList(quick.links)}</MobileSection>
+          <MobileSection title={services.title}>{linkList(services.links)}</MobileSection>
+          <MobileSection title={info.title}>{linkList(info.links, true)}</MobileSection>
+          <MobileSection title="Rejoignez notre univers">
+            <p className="mb-4 text-sm text-ivory/70">Recevez nos actualités, offres exclusives et conseils beauté.</p>
+            <Newsletter />
+          </MobileSection>
+        </div>
+        <div className="pb-24 text-center">
+          <Bottom />
         </div>
       </div>
     </footer>

@@ -1,33 +1,46 @@
-import { MoveHorizontal } from 'lucide-react'
-import { useCallback, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { animate, useInView, useReducedMotion } from 'motion/react'
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react'
 
 interface BeforeAfterSliderProps {
+  // Photo réelle avant le soin, et photo réelle après le soin.
   before: string
   after: string
   label: string
-  beforeCondition?: string
-  afterCondition?: string
-  beforeFilter?: string
-  afterFilter?: string
+  aspect?: string
+  compact?: boolean
+  className?: string
 }
 
 const clamp = (value: number) => Math.min(100, Math.max(0, value))
 
-const defaultBeforeFilter = 'brightness(0.88) contrast(0.90) saturate(0.68) sepia(0.14) hue-rotate(-6deg)'
-const defaultAfterFilter = 'brightness(1.06) contrast(1.05) saturate(1.16)'
+// Tant que la même photo sert d'avant et d'après (aucune paire réelle fournie),
+// on simule l'écart par un léger filtre pour garder le comparateur lisible.
+const simulatedBefore = 'brightness(0.9) contrast(0.92) saturate(0.7) sepia(0.12)'
+const simulatedAfter = 'brightness(1.05) contrast(1.04) saturate(1.1)'
 
-export function BeforeAfterSlider({
-  before,
-  after,
-  label,
-  beforeCondition,
-  afterCondition,
-  beforeFilter = defaultBeforeFilter,
-  afterFilter = defaultAfterFilter,
-}: BeforeAfterSliderProps) {
+export function BeforeAfterSlider({ before, after, label, aspect = 'aspect-[4/3]', compact = false, className = '' }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(50)
   const containerRef = useRef<HTMLDivElement>(null)
   const dragging = useRef(false)
+  const simulated = before === after
+  const touched = useRef(false)
+  const inView = useInView(containerRef, { once: true, amount: 0.6 })
+  const reduce = useReducedMotion()
+
+  // À la première apparition, le curseur balaie l'image pour inviter à la manipuler.
+  useEffect(() => {
+    if (!inView || reduce) return
+    const sweep = animate(50, [50, 22, 78, 50], {
+      duration: 2.4,
+      delay: 0.3,
+      ease: 'easeInOut',
+      onUpdate: (value) => {
+        if (!touched.current) setPosition(value)
+      },
+    })
+    return () => sweep.stop()
+  }, [inView, reduce])
 
   const updateFromClientX = useCallback((clientX: number) => {
     const rect = containerRef.current?.getBoundingClientRect()
@@ -36,6 +49,7 @@ export function BeforeAfterSlider({
   }, [])
 
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    touched.current = true
     dragging.current = true
     event.currentTarget.setPointerCapture(event.pointerId)
     updateFromClientX(event.clientX)
@@ -44,13 +58,12 @@ export function BeforeAfterSlider({
     if (dragging.current) updateFromClientX(event.clientX)
   }
   const stopDragging = (event: PointerEvent<HTMLDivElement>) => {
-    if (dragging.current) {
-      dragging.current = false
-      try {
-        event.currentTarget.releasePointerCapture(event.pointerId)
-      } catch {
-        // pointer capture fallback
-      }
+    if (!dragging.current) return
+    dragging.current = false
+    try {
+      event.currentTarget.releasePointerCapture(event.pointerId)
+    } catch {
+      // La capture a déjà été relâchée par le navigateur.
     }
   }
 
@@ -68,8 +81,11 @@ export function BeforeAfterSlider({
     }
     if (!(event.key in keys)) return
     event.preventDefault()
+    touched.current = true
     setPosition(clamp(keys[event.key]))
   }
+
+  const tag = `absolute bottom-3 z-10 rounded-sm bg-ivory/90 px-2.5 py-1 font-sans tracking-[0.18em] text-ink uppercase ${compact ? 'text-[0.5rem]' : 'text-[0.56rem]'}`
 
   return (
     <div
@@ -78,81 +94,31 @@ export function BeforeAfterSlider({
       onPointerMove={onPointerMove}
       onPointerUp={stopDragging}
       onPointerCancel={stopDragging}
-      className="relative aspect-[4/5] w-full cursor-ew-resize touch-pan-y overflow-hidden rounded-3xl border border-ivory/15 bg-ink-soft select-none shadow-2xl sm:aspect-[5/4]"
+      className={`relative w-full cursor-ew-resize touch-pan-y overflow-hidden rounded-xl bg-cream select-none ${aspect} ${className}`}
     >
-      {/* Before Layer (Pre-treatment: fatigued, dull complexion, muted vibrancy) */}
-      <div className="absolute inset-0 h-full w-full">
-        <img
-          src={before}
-          alt={`${label} — avant le soin`}
-          draggable={false}
-          loading="lazy"
-          className="h-full w-full object-cover"
-          style={{ filter: beforeFilter }}
-        />
-        <div className="pointer-events-none absolute inset-0 bg-ink/15 mix-blend-multiply" />
-      </div>
-
-      {/* After Layer (Post-protocol: radiant glass skin, plump hydration, healthy glow) */}
-      <div
-        className="absolute inset-0 h-full w-full overflow-hidden"
-        style={{ clipPath: `inset(0 0 0 ${position}%)` }}
-      >
+      <img
+        src={before}
+        alt={`${label} — avant le soin`}
+        draggable={false}
+        loading="lazy"
+        className="photo-warm absolute inset-0 h-full w-full object-cover"
+        style={simulated ? { filter: simulatedBefore } : undefined}
+      />
+      <div className="absolute inset-0" style={{ clipPath: `inset(0 0 0 ${position}%)` }}>
         <img
           src={after}
           alt={`${label} — après le soin`}
           draggable={false}
           loading="lazy"
-          className="h-full w-full object-cover"
-          style={{ filter: afterFilter }}
+          className="photo-warm absolute inset-0 h-full w-full object-cover"
+          style={simulated ? { filter: simulatedAfter } : undefined}
         />
-        {/* Luminous dewy glass-skin sheen */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-sand/20 via-champagne/15 to-transparent mix-blend-soft-light" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-champagne/10 via-transparent to-sand/15 mix-blend-screen opacity-50" />
       </div>
 
-      {/* Primary Badges */}
-      <div className="pointer-events-none absolute top-5 left-5 z-10">
-        <span className="rounded-full border border-ivory/25 bg-ink/75 px-4 py-1.5 text-[0.65rem] font-medium tracking-[0.25em] text-ivory/90 uppercase backdrop-blur-md shadow-md">
-          Avant
-        </span>
-      </div>
-      <div className="pointer-events-none absolute top-5 right-5 z-10">
-        <span className="rounded-full border border-sand/40 bg-ink/75 px-4 py-1.5 text-[0.65rem] font-medium tracking-[0.25em] text-sand uppercase backdrop-blur-md shadow-md shadow-sand/10">
-          Après
-        </span>
-      </div>
+      <span className={`${tag} left-3 transition-opacity ${position < 12 ? 'opacity-0' : ''}`}>Avant</span>
+      <span className={`${tag} right-3 transition-opacity ${position > 88 ? 'opacity-0' : ''}`}>Après</span>
 
-      {/* Contextual Clinical State Badges */}
-      {beforeCondition && (
-        <div
-          className="pointer-events-none absolute bottom-5 left-5 z-10 transition-opacity duration-300"
-          style={{ opacity: position > 15 ? 1 : 0 }}
-        >
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-ivory/20 bg-ink/80 px-3.5 py-1.5 text-[0.65rem] font-medium tracking-wide text-ivory/75 backdrop-blur-md shadow-md">
-            <span className="h-1.5 w-1.5 rounded-full bg-ivory/40" />
-            {beforeCondition}
-          </span>
-        </div>
-      )}
-
-      {afterCondition && (
-        <div
-          className="pointer-events-none absolute bottom-5 right-5 z-10 transition-opacity duration-300"
-          style={{ opacity: position < 85 ? 1 : 0 }}
-        >
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-sand/40 bg-ink/80 px-3.5 py-1.5 text-[0.65rem] font-medium tracking-wide text-sand backdrop-blur-md shadow-md shadow-sand/10">
-            <span className="h-1.5 w-1.5 rounded-full bg-sand animate-pulse" />
-            {afterCondition}
-          </span>
-        </div>
-      )}
-
-      {/* Divider Bar & Floating Handle */}
-      <div
-        className="pointer-events-none absolute inset-y-0 w-[2px] bg-gradient-to-b from-transparent via-sand to-transparent shadow-[0_0_14px_rgba(217,167,155,0.8)]"
-        style={{ left: `${position}%` }}
-      >
+      <div className="pointer-events-none absolute inset-y-0 w-px bg-ivory shadow-[0_0_6px_rgba(0,0,0,0.25)]" style={{ left: `${position}%` }}>
         <div
           role="slider"
           tabIndex={0}
@@ -162,12 +128,14 @@ export function BeforeAfterSlider({
           aria-valuenow={Math.round(position)}
           aria-valuetext={`${Math.round(position)} % de l’image avant affichée`}
           onKeyDown={onKeyDown}
-          className="pointer-events-auto absolute top-1/2 left-1/2 flex h-13 w-13 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-sand/90 bg-ink/90 text-sand shadow-[0_0_20px_rgba(217,167,155,0.45)] backdrop-blur-xl transition-transform duration-200 hover:scale-110 focus-visible:scale-110 active:scale-95 cursor-ew-resize"
+          className={`pointer-events-auto absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full bg-ivory text-ink shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-transform hover:scale-110 focus-visible:scale-110 ${
+            compact ? 'h-7 w-7' : 'h-10 w-10'
+          }`}
         >
-          <MoveHorizontal aria-hidden size={18} strokeWidth={1.8} />
+          <ChevronLeft aria-hidden size={compact ? 11 : 14} strokeWidth={1.8} className="-mr-0.5" />
+          <ChevronRight aria-hidden size={compact ? 11 : 14} strokeWidth={1.8} className="-ml-0.5" />
         </div>
       </div>
     </div>
   )
 }
-
