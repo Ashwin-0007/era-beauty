@@ -84,7 +84,7 @@ export function BeforeAfterSlider({
       <div className="absolute inset-0 h-full w-full">
         <img
           src={before}
-          alt={`${label} — before treatment`}
+          alt={`${label} — avant le soin`}
           draggable={false}
           loading="lazy"
           className="h-full w-full object-cover"
@@ -100,7 +100,7 @@ export function BeforeAfterSlider({
       >
         <img
           src={after}
-          alt={`${label} — after treatment`}
+          alt={`${label} — après le soin`}
           draggable={false}
           loading="lazy"
           className="h-full w-full object-cover"
@@ -114,12 +114,12 @@ export function BeforeAfterSlider({
       {/* Primary Badges */}
       <div className="pointer-events-none absolute top-5 left-5 z-10">
         <span className="rounded-full border border-ivory/25 bg-ink/75 px-4 py-1.5 text-[0.65rem] font-medium tracking-[0.25em] text-ivory/90 uppercase backdrop-blur-md shadow-md">
-          Before
+          Avant
         </span>
       </div>
       <div className="pointer-events-none absolute top-5 right-5 z-10">
         <span className="rounded-full border border-sand/40 bg-ink/75 px-4 py-1.5 text-[0.65rem] font-medium tracking-[0.25em] text-sand uppercase backdrop-blur-md shadow-md shadow-sand/10">
-          After
+          Après
         </span>
       </div>
 
@@ -156,11 +156,11 @@ export function BeforeAfterSlider({
         <div
           role="slider"
           tabIndex={0}
-          aria-label={`Compare before and after: ${label}`}
+          aria-label={`Comparer avant et après : ${label}`}
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={Math.round(position)}
-          aria-valuetext={`${Math.round(position)}% before shown`}
+          aria-valuetext={`${Math.round(position)} % de l’image avant affichée`}
           onKeyDown={onKeyDown}
           className="pointer-events-auto absolute top-1/2 left-1/2 flex h-13 w-13 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-sand/90 bg-ink/90 text-sand shadow-[0_0_20px_rgba(217,167,155,0.45)] backdrop-blur-xl transition-transform duration-200 hover:scale-110 focus-visible:scale-110 active:scale-95 cursor-ew-resize"
         >

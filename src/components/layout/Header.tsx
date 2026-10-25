@@ -37,7 +37,7 @@ export function Header({ menuOpen, onMenuToggle }: HeaderProps) {
             onClick={onMenuToggle}
             aria-expanded={menuOpen}
             aria-controls="site-menu"
-            aria-label="Open menu"
+            aria-label="Ouvrir le menu"
             className="group relative -ml-2 flex h-11 items-center gap-3.5 rounded-full border border-ink/10 bg-ivory/60 px-4 backdrop-blur-md transition-all duration-500 ease-[var(--ease-luxe)] hover:border-oxblood/50 hover:bg-ivory hover:shadow-[0_4px_16px_-4px_rgba(183,110,121,0.25)] active:scale-95"
           >
             <span aria-hidden className="flex w-5 flex-col gap-[5px]">
@@ -53,7 +53,7 @@ export function Header({ menuOpen, onMenuToggle }: HeaderProps) {
 
         <a
           href="#home"
-          aria-label="ERA Beauty — back to top"
+          aria-label="ERA Beauty — retour en haut"
           onClick={(event) => {
             event.preventDefault()
             scrollToSection('home')
@@ -72,7 +72,7 @@ export function Header({ menuOpen, onMenuToggle }: HeaderProps) {
               icon={<CalendarDays size={14} strokeWidth={1.5} />}
               className="shadow-sm"
             >
-              Book an Appointment
+              Prendre rendez-vous
             </Button>
           </div>
           <a
@@ -81,7 +81,7 @@ export function Header({ menuOpen, onMenuToggle }: HeaderProps) {
               event.preventDefault()
               scrollToSection('contact')
             }}
-            aria-label="Contact and location"
+            aria-label="Contact et accès"
             className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/10 bg-ivory/60 text-ink backdrop-blur-md transition-all duration-500 hover:border-oxblood hover:text-oxblood sm:hidden"
           >
             <MapPin size={18} strokeWidth={1.4} />

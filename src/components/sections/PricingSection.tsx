@@ -36,22 +36,22 @@ export function PricingSection() {
         <div className="min-w-0 lg:col-span-5">
           <div className="lg:sticky lg:top-28">
             <SectionHeading
-              eyebrow="Pricing"
+              eyebrow="Tarifs"
               id="pricing-title"
               title={
                 <>
-                  The treatment <em className="text-oxblood">menu</em>
+                  La carte des <em className="text-oxblood">soins</em>
                 </>
               }
             />
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-sm text-ink/65">
-                Transparent pricing, with a consultation included for every first visit.
+                Des tarifs transparents, avec une consultation incluse lors de chaque première visite.
               </p>
             </Reveal>
             <Photo
               src={images.pricingFeature}
-              alt="Hands holding a jar of skin cream"
+              alt="Mains tenant un pot de crème de soin"
               className="mt-10 hidden aspect-[5/4] lg:block"
             />
           </div>
@@ -60,7 +60,7 @@ export function PricingSection() {
         <div className="min-w-0 lg:col-span-7">
           <div
             role="tablist"
-            aria-label="Treatment categories"
+            aria-label="Catégories de soins"
             className="glass-pill p-1.5 rounded-full flex gap-1.5 overflow-x-auto [scrollbar-width:none] w-full max-w-full sm:w-auto sm:inline-flex"
           >
             {pricing.map((category, index) => {
@@ -118,7 +118,7 @@ export function PricingSection() {
                       {item.name}
                     </h3>
                     <p className="display self-start text-[1.75rem] leading-tight text-oxblood whitespace-nowrap sm:text-3xl font-light">
-                      {item.from && <span className="mr-1.5 font-sans text-xs tracking-[0.16em] text-ink/50 uppercase">from</span>}
+                      {item.from && <span className="mr-1.5 font-sans text-xs tracking-[0.16em] text-ink/50 uppercase">dès</span>}
                       {formatPrice(item.price)}
                     </p>
                     <p className="text-[0.96rem] leading-relaxed text-ink/70">
@@ -131,10 +131,10 @@ export function PricingSection() {
                       <button
                         type="button"
                         onClick={() => openBooking(item.serviceId)}
-                        aria-label={`Book ${item.name}`}
+                        aria-label={`Réserver ${item.name}`}
                         className="eyebrow rounded-full border border-ink/20 bg-ivory px-5 py-2.5 text-ink transition-all duration-500 hover:border-oxblood hover:bg-oxblood hover:text-ivory hover:shadow-[0_4px_16px_-2px_rgba(183,110,121,0.4)]"
                       >
-                        Reserve
+                        Réserver
                       </button>
                     </div>
                   </div>

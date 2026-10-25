@@ -20,7 +20,7 @@ export function PersistentBookingCTA() {
         className="flex h-[3.25rem] w-full items-center justify-center gap-3 rounded-full bg-ink text-[0.72rem] font-medium tracking-[0.22em] text-ivory uppercase transition-all duration-300 active:bg-oxblood shadow-luxe"
       >
         <CalendarDays aria-hidden size={16} strokeWidth={1.5} className="text-sand" />
-        Book an Appointment
+        Prendre rendez-vous
       </motion.button>
     </motion.div>
   )

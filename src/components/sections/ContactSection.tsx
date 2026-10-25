@@ -21,7 +21,7 @@ function InfoBlock({ icon, title, children }: { icon: ReactNode; title: string; 
 
 function DistrictMap() {
   return (
-    <div role="img" aria-label="ERA Beauty Atelier map location" className="relative h-full w-full overflow-hidden bg-cream/70">
+    <div role="img" aria-label="Plan d’accès de l’Atelier ERA Beauty" className="relative h-full w-full overflow-hidden bg-cream/70">
       <svg aria-hidden className="absolute inset-0 h-full w-full text-taupe/35" preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 400">
         <g fill="none" stroke="currentColor" strokeWidth="1">
           <path d="M-20 80 Q 120 120 200 60 T 420 90" />
@@ -38,7 +38,7 @@ function DistrictMap() {
         <MapPin size={42} strokeWidth={1.2} className="fill-oxblood text-ivory drop-shadow-md" />
       </div>
       <p className="eyebrow absolute bottom-4 left-4 rounded-full border border-ink/10 bg-ivory/95 px-4 py-2 text-mocha shadow-sm backdrop-blur-md">
-        Atelier Map · Place Vendôme
+        Plan de l’Atelier · Place Vendôme
       </p>
     </div>
   )
@@ -49,11 +49,11 @@ export function ContactSection() {
     <section id="contact" aria-labelledby="contact-title" className="bg-cream pt-14 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24">
       <div className="container-x">
         <SectionHeading
-          eyebrow="Contact & Location"
+          eyebrow="Contact & Accès"
           id="contact-title"
           title={
             <>
-              Visit the <em className="text-oxblood">institute</em>
+              Visitez l’<em className="text-oxblood">institut</em>
             </>
           }
         />
@@ -61,7 +61,7 @@ export function ContactSection() {
         <div className="mt-14 grid gap-10 lg:mt-20 lg:grid-cols-12 lg:gap-12 items-stretch">
           <Reveal className="glass-card rounded-3xl p-8 sm:p-10 shadow-luxe lg:col-span-5 flex flex-col justify-between">
             <div>
-              <InfoBlock icon={<MapPin size={18} strokeWidth={1.5} />} title="Address">
+              <InfoBlock icon={<MapPin size={18} strokeWidth={1.5} />} title="Adresse">
                 <address className="not-italic leading-relaxed">
                   {contact.addressLines.map((line) => (
                     <span key={line} className="block">
@@ -70,17 +70,17 @@ export function ContactSection() {
                   ))}
                 </address>
               </InfoBlock>
-              <InfoBlock icon={<Phone size={18} strokeWidth={1.5} />} title="Phone">
+              <InfoBlock icon={<Phone size={18} strokeWidth={1.5} />} title="Téléphone">
                 <a href={contact.phoneHref} className="transition-colors hover:text-oxblood">
                   {contact.phoneDisplay}
                 </a>
               </InfoBlock>
-              <InfoBlock icon={<Mail size={18} strokeWidth={1.5} />} title="Email">
+              <InfoBlock icon={<Mail size={18} strokeWidth={1.5} />} title="E-mail">
                 <a href={`mailto:${contact.email}`} className="break-all transition-colors hover:text-oxblood">
                   {contact.email}
                 </a>
               </InfoBlock>
-              <InfoBlock icon={<Clock size={18} strokeWidth={1.5} />} title="Opening hours">
+              <InfoBlock icon={<Clock size={18} strokeWidth={1.5} />} title="Horaires d’ouverture">
                 <dl className="space-y-2 text-[0.95rem]">
                   {contact.hours.map((row) => (
                     <div key={row.days} className="flex justify-between gap-6 border-b border-ink/5 pb-1 last:border-b-0">
@@ -92,7 +92,7 @@ export function ContactSection() {
               </InfoBlock>
             </div>
             <p className="border-t border-ink/10 pt-4 text-xs text-ink/45">
-              Appointments are held in private suites by prior reservation.
+              Les rendez-vous ont lieu en salon privé, sur réservation préalable.
             </p>
           </Reveal>
 
@@ -101,7 +101,7 @@ export function ContactSection() {
               {contact.mapEmbedUrl ? (
                 <iframe
                   src={contact.mapEmbedUrl}
-                  title="ERA Beauty location map"
+                  title="Plan d’accès ERA Beauty"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="absolute inset-0 h-full w-full border-0 grayscale-[0.3]"
@@ -112,13 +112,13 @@ export function ContactSection() {
             </div>
             <div className="mt-6 grid gap-3 sm:grid-cols-3">
               <a href={contact.directionsUrl} target="_blank" rel="noreferrer" className={buttonClass('primary', 'md', 'shadow-sm')}>
-                <Navigation size={14} strokeWidth={1.4} /> Directions
+                <Navigation size={14} strokeWidth={1.4} /> Itinéraire
               </a>
               <a href={contact.phoneHref} className={buttonClass('outline', 'md', 'shadow-sm')}>
-                <Phone size={14} strokeWidth={1.4} /> Call
+                <Phone size={14} strokeWidth={1.4} /> Appeler
               </a>
               <a href={`mailto:${contact.email}`} className={buttonClass('outline', 'md', 'shadow-sm')}>
-                <Mail size={14} strokeWidth={1.4} /> Email
+                <Mail size={14} strokeWidth={1.4} /> E-mail
               </a>
             </div>
           </Reveal>

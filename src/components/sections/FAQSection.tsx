@@ -38,17 +38,17 @@ export function FAQSection() {
               id="faq-title"
               title={
                 <>
-                  Good to <em className="text-oxblood">know</em>
+                  Bon à <em className="text-oxblood">savoir</em>
                 </>
               }
             />
             <Reveal delay={0.1}>
-              <p className="mt-6 max-w-xs text-ink/65">Still wondering about something? We are happy to help before you book.</p>
+              <p className="mt-6 max-w-xs text-ink/65">Une question en suspens ? Nous serons ravis de vous aider avant votre réservation.</p>
               <Button variant="outline" className="mt-8" onClick={() => openBooking()}>
-                Request an Appointment
+                Demander un rendez-vous
               </Button>
             </Reveal>
-            <Photo src={images.faqFeature} alt="Skin care product resting on soft fabric" className="arch mt-12 hidden aspect-[3/4] w-56 lg:block" />
+            <Photo src={images.faqFeature} alt="Produit de soin posé sur un tissu doux" className="arch mt-12 hidden aspect-[3/4] w-56 lg:block" />
           </div>
         </div>
 
