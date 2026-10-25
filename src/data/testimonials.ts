@@ -11,28 +11,28 @@ export const testimonials: Testimonial[] = [
   {
     id: 't1',
     quote:
-      'ERA Beauty has completely redefined facial architecture for me. The 90-minute Signature Protocol left my skin with a luminous glass-like clarity that lasted for weeks leading up to fashion week.',
+      'ERA Beauty a complètement redéfini l’architecture de mon visage. Le Protocole Signature de 90 minutes a offert à ma peau une clarté lumineuse, presque translucide, qui a duré des semaines jusqu’à la fashion week.',
     client: 'Geneviève Laurent',
-    roleOrLocation: 'Private Suite Member • New York',
-    treatment: 'Signature Facial Ritual',
+    roleOrLocation: 'Membre du Salon Privé • New York',
+    treatment: 'Rituel Visage Signature',
     rating: 5,
   },
   {
     id: 't2',
     quote:
-      'The quiet discretion and meticulous scientific precision are unparalleled. Walking into the atelier immediately drops your heart rate. It is not merely skincare; it is restorative poetry.',
+      'La discrétion feutrée et la précision scientifique méticuleuse sont incomparables. Dès l’entrée dans l’atelier, le rythme cardiaque ralentit. Ce n’est pas simplement un soin de la peau ; c’est une poésie réparatrice.',
     client: 'Dr. Alistair Vance',
-    roleOrLocation: 'Atelier Patron • London & Zurich',
-    treatment: 'Advanced Collagen Induction',
+    roleOrLocation: 'Client de l’Atelier • Londres & Zurich',
+    treatment: 'Induction de Collagène Avancée',
     rating: 5,
   },
   {
     id: 't3',
     quote:
-      'I was astonished by the immediate sculpt and radiance following the Hydra Glow treatment. My skin barrier has never felt this calm, deeply hydrated, and resilient against travel fatigue.',
+      'J’ai été stupéfaite par l’effet sculptant et l’éclat immédiats après le soin Hydra Glow. Ma barrière cutanée n’a jamais été aussi apaisée, profondément hydratée et résistante à la fatigue des voyages.',
     client: 'Camille de Montreuil',
-    roleOrLocation: 'Editorial Contributor • Paris',
-    treatment: 'Hydra Glow & Lymphatic Reset',
+    roleOrLocation: 'Contributrice Éditoriale • Paris',
+    treatment: 'Hydra Glow & Drainage Lymphatique',
     rating: 5,
   },
 ]

@@ -18,14 +18,14 @@ interface SideNavigationProps {
 }
 
 const previewMap: Record<SectionId, { image: string; tag: string; quote: string }> = {
-  home: { image: images.heroPortrait, tag: '01 · Welcome', quote: 'Beauty in its finest era.' },
-  institute: { image: images.aboutInterior, tag: '02 · About us', quote: 'A calm, considered sanctuary for skin.' },
-  services: { image: images.serviceFacial, tag: '03 · Treatments', quote: 'Tailored rituals, guided by your skin.' },
-  pricing: { image: images.pricingFeature, tag: '04 · Menu & rates', quote: 'Transparent pricing with consultations.' },
-  results: { image: images.resultFace, tag: '05 · Before & after', quote: 'Proven radiance & clinical precision.' },
-  chronicles: { image: images.serviceSkin, tag: '06 · Chronicles', quote: 'Impressions & words from verified patrons.' },
-  contact: { image: images.contactFeature, tag: '07 · Location', quote: 'Find our doors & opening hours.' },
-  faq: { image: images.faqFeature, tag: '08 · Answers', quote: 'Preparation, bookings & policies.' },
+  home: { image: images.heroPortrait, tag: 'Bienvenue', quote: 'La beauté à son apogée.' },
+  institute: { image: images.aboutInterior, tag: 'À propos', quote: 'Un sanctuaire paisible et réfléchi pour votre peau.' },
+  services: { image: images.serviceFacial, tag: 'Soins', quote: 'Des rituels sur mesure, guidés par votre peau.' },
+  pricing: { image: images.pricingFeature, tag: 'Carte & tarifs', quote: 'Des tarifs transparents, consultation incluse.' },
+  results: { image: images.resultFace, tag: 'Avant & après', quote: 'Un éclat prouvé, une précision clinique.' },
+  chronicles: { image: images.serviceSkin, tag: 'Témoignages', quote: 'Impressions et mots de clientes vérifiées.' },
+  contact: { image: images.contactFeature, tag: 'Accès', quote: 'Notre adresse et nos horaires d’ouverture.' },
+  faq: { image: images.faqFeature, tag: 'Réponses', quote: 'Préparation, réservations & conditions.' },
 }
 
 const list: Variants = {
@@ -64,7 +64,7 @@ export function SideNavigation({ open, activeId, onClose, onNavigate, onBook }: 
             id="site-menu"
             role="dialog"
             aria-modal="true"
-            aria-label="Site navigation"
+            aria-label="Navigation du site"
             initial={{ x: '-100%' }}
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
@@ -77,7 +77,7 @@ export function SideNavigation({ open, activeId, onClose, onNavigate, onBook }: 
                 type="button"
                 onClick={onClose}
                 data-autofocus
-                aria-label="Close menu"
+                aria-label="Fermer le menu"
                 className="group flex h-11 w-11 items-center justify-center rounded-full border border-ivory/20 bg-ivory/5 transition-all duration-500 ease-[var(--ease-luxe)] hover:rotate-90 hover:border-champagne hover:bg-champagne/15 hover:text-champagne active:scale-95"
               >
                 <X size={20} strokeWidth={1.3} />
@@ -139,7 +139,7 @@ export function SideNavigation({ open, activeId, onClose, onNavigate, onBook }: 
                     icon={<CalendarDays size={16} strokeWidth={1.4} />}
                     className="w-full shadow-lg"
                   >
-                    Book an Appointment
+                    Prendre rendez-vous
                   </Button>
                 </div>
               </nav>
@@ -170,7 +170,7 @@ export function SideNavigation({ open, activeId, onClose, onNavigate, onBook }: 
                 </div>
 
                 <div className="border-t border-ivory/10 pt-6 text-xs text-ivory/60 space-y-2">
-                  <p className="eyebrow text-champagne/80">Institute Visit</p>
+                  <p className="eyebrow text-champagne/80">Visite de l’Institut</p>
                   <p className="text-ivory/80 leading-relaxed">
                     {contact.addressLines.join(', ')}
                   </p>

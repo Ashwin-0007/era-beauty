@@ -15,18 +15,18 @@ export function ResultsSection() {
       <div className="container-x">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow="Results"
+            eyebrow="Résultats"
             id="results-title"
             tone="light"
             title={
               <>
-                Before <em className="text-champagne">&amp;</em> after
+                Avant <em className="text-champagne">&amp;</em> après
               </>
             }
           />
           <Reveal delay={0.1} className="max-w-sm">
             <p className="text-ivory/70 text-sm leading-relaxed">
-              Documented skin transformations achieved through our bespoke protocol regimens. Results reflect individualized treatment plans.
+              Des transformations cutanées documentées, obtenues grâce à nos protocoles sur mesure. Les résultats reflètent des programmes de soins individualisés.
             </p>
           </Reveal>
         </div>
@@ -55,7 +55,7 @@ export function ResultsSection() {
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-ivory/60">
               <span className="flex items-center gap-2">
                 <span className="inline-block h-2 w-2 rounded-full bg-sand/80 shadow-[0_0_8px_rgba(217,167,155,0.8)]" />
-                Drag the handle or use arrow keys to inspect the dermal transformation.
+                Faites glisser le curseur ou utilisez les flèches du clavier pour observer la transformation de la peau.
               </span>
               {active.metric && (
                 <span className="rounded-full border border-sand/35 bg-sand/10 px-3 py-1 font-medium tracking-wide text-sand">
@@ -67,7 +67,7 @@ export function ResultsSection() {
 
           <div className="lg:col-span-4">
             <p className="eyebrow text-champagne/80 tracking-[0.3em]" id="results-cases">
-              Verified Case Studies
+              Études de cas vérifiées
             </p>
             <ul aria-labelledby="results-cases" className="mt-5 space-y-3">
               {results.map((result, index) => {

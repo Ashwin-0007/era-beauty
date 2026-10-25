@@ -43,14 +43,14 @@ export function Footer({ onNavigate }: FooterProps) {
               <div className="inline-flex items-center gap-2 rounded-full border border-champagne/30 bg-ivory/5 px-3.5 py-1 text-xs text-champagne mb-3">
                 <Sparkles size={13} className="text-champagne" />
                 <span className="eyebrow tracking-[0.25em] text-champagne font-normal">
-                  The Atelier Gazette
+                  La Gazette de l’Atelier
                 </span>
               </div>
               <h3 className="display text-3xl sm:text-4xl text-ivory leading-tight">
-                Private Invitations &amp; <em className="gold-foil-text font-normal italic">Skin Chronicles</em>
+                Invitations privées &amp; <em className="gold-foil-text font-normal italic">Chroniques de la peau</em>
               </h3>
               <p className="mt-3 text-sm sm:text-base text-ivory/70 max-w-md leading-relaxed">
-                Receive unreleased seasonal treatment protocols, private salon reservations, and dermatological insights directly to your inbox.
+                Recevez en avant-première nos protocoles de saison, nos réservations privées et nos conseils dermatologiques directement dans votre boîte mail.
               </p>
             </div>
 
@@ -61,8 +61,8 @@ export function Footer({ onNavigate }: FooterProps) {
                     <Check size={20} strokeWidth={2} />
                   </div>
                   <div>
-                    <h4 className="font-display text-lg text-ivory font-medium">Welcome to the Atelier Circle</h4>
-                    <p className="text-xs text-ivory/65 mt-0.5">Your email has been recorded in our private guest ledger.</p>
+                    <h4 className="font-display text-lg text-ivory font-medium">Bienvenue dans le Cercle de l’Atelier</h4>
+                    <p className="text-xs text-ivory/65 mt-0.5">Votre adresse e-mail a bien été enregistrée dans notre registre privé.</p>
                   </div>
                 </div>
               ) : (
@@ -72,7 +72,7 @@ export function Footer({ onNavigate }: FooterProps) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    placeholder="Enter your private email address"
+                    placeholder="Saisissez votre adresse e-mail"
                     className="flex-1 rounded-full border border-ivory/20 bg-ivory/5 px-6 py-3.5 text-sm text-ivory placeholder:text-ivory/40 focus:border-oxblood focus:outline-none focus:ring-1 focus:ring-oxblood transition-all"
                   />
                   <Button
@@ -82,7 +82,7 @@ export function Footer({ onNavigate }: FooterProps) {
                     icon={<ArrowRight size={14} strokeWidth={1.8} />}
                     className="shadow-luxe px-7 shrink-0 whitespace-nowrap"
                   >
-                    Subscribe
+                    S’abonner
                   </Button>
                 </form>
               )}
@@ -96,28 +96,28 @@ export function Footer({ onNavigate }: FooterProps) {
               <LogoMark accentClassName="text-champagne" className="h-[4.8rem] w-auto shrink-0 sm:h-[6.5rem]" />
               <div>
                 <p className="display text-[4.5rem] leading-[0.8] tracking-[0.12em] sm:text-[6.5rem]">ERA</p>
-                <p className="eyebrow mt-1 text-champagne tracking-[0.34em]">Beauty Institute</p>
+                <p className="eyebrow mt-1 text-champagne tracking-[0.34em]">Institut de Beauté</p>
               </div>
             </div>
             
             <p className="mt-7 max-w-md text-ivory/70 leading-relaxed text-sm sm:text-base">
-              A calm, architectural sanctuary for skin, face, and restorative body rituals. Rooted in cellular science, quiet discretion, and natural beauty.
+              Un sanctuaire paisible et architectural dédié aux rituels de la peau, du visage et du corps. Ancré dans la science cellulaire, la discrétion et la beauté naturelle.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-2.5">
               <span className="group rounded-full bg-cream px-3.5 py-1.5 text-[0.7rem] tracking-wider uppercase text-ink font-medium flex items-center gap-2 border border-sand/50 shadow-sm transition-all duration-300 hover:bg-oxblood hover:border-oxblood hover:shadow-glow-rose cursor-default">
                 <ShieldCheck size={13} className="text-oxblood shrink-0 transition-colors group-hover:text-ivory" />
-                <span className="text-ink transition-colors group-hover:text-ivory">Dermal Science Certified</span>
+                <span className="text-ink transition-colors group-hover:text-ivory">Expertise dermatologique certifiée</span>
               </span>
               <span className="group rounded-full bg-cream px-3.5 py-1.5 text-[0.7rem] tracking-wider uppercase text-ink font-medium flex items-center gap-2 border border-sand/50 shadow-sm transition-all duration-300 hover:bg-oxblood hover:border-oxblood hover:shadow-glow-rose cursor-default">
                 <Sparkles size={13} className="text-oxblood shrink-0 transition-colors group-hover:text-ivory" />
-                <span className="text-ink transition-colors group-hover:text-ivory">Private Suite Protocol</span>
+                <span className="text-ink transition-colors group-hover:text-ivory">Protocole en salon privé</span>
               </span>
             </div>
           </div>
 
           <nav aria-label="Footer Navigation" className="lg:col-span-3">
-            <p className="eyebrow text-champagne/90 tracking-[0.28em]">01 · Atelier Navigation</p>
+            <p className="eyebrow text-champagne/90 tracking-[0.28em]">01 · Navigation</p>
             <ul className="mt-6 space-y-3.5">
               {navItems.map((nav) => (
                 <li key={nav.id}>
@@ -141,7 +141,7 @@ export function Footer({ onNavigate }: FooterProps) {
           </nav>
 
           <div className="lg:col-span-4">
-            <p className="eyebrow text-champagne/90 tracking-[0.28em]">02 · Concierge &amp; Visit</p>
+            <p className="eyebrow text-champagne/90 tracking-[0.28em]">02 · Conciergerie &amp; Visite</p>
             <div className="glass-dark rounded-2xl p-6 mt-6 border border-ivory/10 space-y-4">
               <div className="flex items-start gap-3 text-sm text-ivory/80">
                 <MapPin size={16} className="text-oxblood shrink-0 mt-0.5" />
@@ -176,12 +176,12 @@ export function Footer({ onNavigate }: FooterProps) {
 
               <div className="flex items-center gap-3 text-xs text-ivory/55 border-t border-ivory/10 pt-3">
                 <Clock size={14} className="text-champagne shrink-0" />
-                <span>Mon–Sat 9:00 — 19:30 • Private Suite Hours</span>
+                <span>Lun–Sam 9h00 — 19h30 • Horaires des salons privés</span>
               </div>
             </div>
 
             <div className="mt-6 flex items-center gap-3">
-              <span className="eyebrow text-[0.65rem] text-ivory/45">Connect</span>
+              <span className="eyebrow text-[0.65rem] text-ivory/45">Suivez-nous</span>
               <ul className="flex gap-2.5">
                 {contact.socials.map((social) => {
                   const Icon = socialIcons[social.label]
@@ -191,7 +191,7 @@ export function Footer({ onNavigate }: FooterProps) {
                         href={social.href}
                         target="_blank"
                         rel="noreferrer"
-                        aria-label={`ERA Beauty on ${social.label}`}
+                        aria-label={`ERA Beauty sur ${social.label}`}
                         className="flex h-10 w-10 items-center justify-center rounded-full border border-ivory/15 bg-ivory/5 text-ivory/80 transition-all duration-300 hover:border-oxblood hover:bg-oxblood hover:text-ivory hover:shadow-glow-rose hover:scale-110"
                       >
                         <Icon size={16} strokeWidth={1.4} />
@@ -214,7 +214,7 @@ export function Footer({ onNavigate }: FooterProps) {
             onClick={() => onNavigate('home')}
             className="group inline-flex items-center gap-3 self-start rounded-full bg-cream px-5 py-2.5 uppercase tracking-[0.22em] text-ink text-xs font-medium border border-sand/50 shadow-luxe transition-all duration-300 hover:bg-oxblood hover:border-oxblood hover:shadow-glow-rose hover:scale-105 sm:self-auto"
           >
-            <span className="text-ink font-medium transition-colors group-hover:text-ivory">Back to top</span>
+            <span className="text-ink font-medium transition-colors group-hover:text-ivory">Retour en haut</span>
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-ivory transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-ivory group-hover:text-ink">
               <ArrowUp size={13} strokeWidth={2} />
             </span>

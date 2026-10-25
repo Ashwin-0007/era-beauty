@@ -11,18 +11,18 @@ import { Reveal } from '../ui/Reveal'
 const guarantees = [
   {
     icon: ShieldCheck,
-    title: 'Private Suite Discretion',
-    desc: 'One client per private suite for complete tranquility and confidentiality.',
+    title: 'La discrétion du salon privé',
+    desc: 'Une seule cliente par salon privé, pour une tranquillité et une confidentialité totales.',
   },
   {
     icon: HeartHandshake,
-    title: 'Cellular Skin Diagnosis',
-    desc: 'High-resolution dermal imaging paired with a bespoke treatment plan.',
+    title: 'Diagnostic cutané cellulaire',
+    desc: 'Imagerie cutanée haute résolution associée à un programme de soins sur mesure.',
   },
   {
     icon: Sparkles,
-    title: 'Complimentary Concierge',
-    desc: 'Chilled champagne, herbal infusions, and valet parking upon arrival.',
+    title: 'Conciergerie offerte',
+    desc: 'Champagne frais, infusions de plantes et voiturier dès votre arrivée.',
   },
 ]
 
@@ -34,7 +34,7 @@ export function ClosingCTA() {
   return (
     <section
       ref={ref}
-      aria-label="Book your visit"
+      aria-label="Réservez votre visite"
       data-surface="dark"
       className="relative isolate overflow-hidden bg-ink text-ivory"
     >
@@ -65,16 +65,16 @@ export function ClosingCTA() {
               <div className="inline-flex items-center gap-2 rounded-full border border-champagne/30 bg-ivory/5 px-4 py-1.5 text-xs text-champagne backdrop-blur-sm">
                 <Sparkles size={13} className="text-champagne" />
                 <span className="eyebrow tracking-[0.28em] text-champagne font-normal">
-                  Private Suite Reservations
+                  Réservations en salon privé
                 </span>
               </div>
 
               <h2 className="display mt-6 text-[2.6rem] leading-[1.02] sm:text-5xl lg:text-[4.2rem]">
-                Begin your <em className="gold-foil-text font-normal italic">new era</em> of radiant skin.
+                Ouvrez une <em className="gold-foil-text font-normal italic">nouvelle ère</em> pour votre peau.
               </h2>
 
               <p className="mt-5 max-w-xl text-base sm:text-lg text-ivory/75 font-light leading-relaxed">
-                Reserve your private consultation and experience bespoke face, skin, and restorative body rituals tailored to your unique cellular profile.
+                Réservez votre consultation privée et découvrez des rituels visage, peau et corps sur mesure, adaptés à votre profil cellulaire unique.
               </p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-3 border-t border-ivory/10 pt-8">
@@ -101,14 +101,14 @@ export function ClosingCTA() {
                 icon={<ArrowRight size={15} strokeWidth={1.8} />}
                 className="shadow-luxe px-8"
               >
-                Reserve Consultation
+                Réserver une consultation
               </Button>
 
               <a
                 href="#services"
                 className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-ivory/75 transition-colors hover:text-champagne group"
               >
-                <span>View Treatment Menu</span>
+                <span>Voir la carte des soins</span>
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
             </div>
@@ -118,14 +118,14 @@ export function ClosingCTA() {
             <div className="relative aspect-[16/10] sm:aspect-[16/11] w-full overflow-hidden rounded-2xl border border-ivory/15">
               <img
                 src={images.aboutInterior}
-                alt="ERA Beauty private treatment suite interior"
+                alt="Intérieur d’un salon de soin privé ERA Beauty"
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
               
               <div className="absolute bottom-4 left-4 right-4 glass-pill rounded-xl p-3 border border-ivory/20 bg-ink/75 backdrop-blur-md">
                 <p className="font-display italic text-xs sm:text-sm text-ivory/90 leading-snug">
-                  "Only 8 bespoke appointments curated each day for total calm."
+                  « Seulement 8 rendez-vous sur mesure par jour, pour un calme absolu. »
                 </p>
               </div>
             </div>
@@ -137,7 +137,7 @@ export function ClosingCTA() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-oxblood shadow-[0_0_8px_rgba(183,110,121,0.8)]" />
                 </span>
                 <span className="font-sans uppercase tracking-widest text-[0.68rem] text-ivory/95">
-                  Private Suites Available This Week
+                  Salons privés disponibles cette semaine
                 </span>
               </div>
 
@@ -145,15 +145,15 @@ export function ClosingCTA() {
                 <div className="flex items-center justify-between text-xs text-ivory/70 border-b border-ivory/10 pb-3">
                   <span className="flex items-center gap-2">
                     <Clock size={13} className="text-champagne" />
-                    Atelier Hours
+                    Horaires de l’Atelier
                   </span>
-                  <span className="text-ivory font-medium">Mon–Sat 9:00 — 19:30</span>
+                  <span className="text-ivory font-medium">Lun–Sam 9h00 — 19h30</span>
                 </div>
 
                 <div className="flex items-center justify-between text-xs text-ivory/70">
                   <span className="flex items-center gap-2">
                     <Phone size={13} className="text-champagne" />
-                    Concierge Line
+                    Ligne de la conciergerie
                   </span>
                   <a
                     href={contact.phoneHref}

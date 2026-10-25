@@ -9,7 +9,7 @@ import { Button } from '../ui/Button'
 import { Marquee } from '../ui/Marquee'
 import { luxeEase } from '../../lib/motion'
 
-const headline = ['Beauty,', 'in its finest', 'era.']
+const headline = ['La beauté,', 'à sa plus belle', 'ère.']
 
 function RotatingBadge() {
   return (
@@ -18,7 +18,7 @@ function RotatingBadge() {
         <path id="badge-circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" />
       </defs>
       <text className="fill-current font-sans text-[9.4px] uppercase" letterSpacing="3.2">
-        <textPath href="#badge-circle">Skin · Face · Body · Rituals · Care · </textPath>
+        <textPath href="#badge-circle">Peau · Visage · Corps · Rituels · Soin · </textPath>
       </text>
     </svg>
   )
@@ -48,7 +48,7 @@ export function HeroSection() {
           >
             <span aria-hidden className="h-px w-10 bg-oxblood/60" />
             <p className="eyebrow tracking-[0.34em] text-mocha font-normal">
-              Beauty Institute · Haute Esthétique
+              Institut de Beauté · Haute Esthétique
             </p>
           </motion.div>
 
@@ -74,14 +74,14 @@ export function HeroSection() {
             className="mt-8 max-w-xl lg:ml-20"
           >
             <p className="max-w-md text-[1.08rem] leading-relaxed text-ink/75 font-light">
-              Personalised skin, face and body treatments delivered with clinical precision and unhurried holistic care.
+              Des soins personnalisés de la peau, du visage et du corps, alliant précision clinique et approche holistique sans précipitation.
             </p>
             <div className="mt-9 flex flex-col gap-3.5 sm:flex-row sm:flex-wrap sm:items-center">
               <Button size="lg" onClick={() => openBooking()} icon={<ArrowRight size={15} strokeWidth={1.4} />} className="shadow-luxe">
-                Book an Appointment
+                Prendre rendez-vous
               </Button>
               <Button size="lg" variant="outline" onClick={() => scrollToSection('services')}>
-                Explore Treatments
+                Découvrir les soins
               </Button>
             </div>
           </motion.div>
@@ -98,7 +98,7 @@ export function HeroSection() {
           >
             <motion.img
               src={images.heroPortrait}
-              alt="Portrait of a woman with calm, radiant skin"
+              alt="Portrait d’une femme à la peau apaisée et lumineuse"
               initial={{ scale: 1.22 }}
               animate={{ scale: 1 }}
               transition={{ duration: 2.2, ease: luxeEase, delay: 0.2 }}
@@ -119,14 +119,14 @@ export function HeroSection() {
               <img src={images.heroDetail} alt="" className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
             </div>
             <div className="pt-3">
-              <span className="eyebrow text-[0.62rem] text-oxblood font-normal">Signature Care</span>
-              <p className="display mt-1 text-2xl font-light">Hydra Glow Facial</p>
+              <span className="eyebrow text-[0.62rem] text-oxblood font-normal">Soin Signature</span>
+              <p className="display mt-1 text-2xl font-light">Soin Hydra Glow</p>
               <button
                 type="button"
                 onClick={() => openBooking('facials')}
                 className="eyebrow mt-2 flex items-center gap-2 text-mocha transition-all duration-300 hover:text-oxblood hover:translate-x-1"
               >
-                Reserve Treatment <ArrowRight size={12} strokeWidth={1.5} />
+                Réserver ce soin <ArrowRight size={12} strokeWidth={1.5} />
               </button>
             </div>
           </motion.div>

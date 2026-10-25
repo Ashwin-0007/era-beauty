@@ -39,15 +39,15 @@ export function AppointmentModal() {
             <div aria-hidden className="mx-auto mt-3 h-1.5 w-12 rounded-full bg-ink/15 sm:hidden" />
             <div className="flex items-start justify-between gap-6 px-6 pt-6 sm:px-10 sm:pt-9">
               <div>
-                <p className="eyebrow text-mocha tracking-[0.28em]">Appointment request</p>
+                <p className="eyebrow text-mocha tracking-[0.28em]">Demande de rendez-vous</p>
                 <h2 id="booking-title" className="display mt-2 text-[2.2rem] leading-none sm:text-5xl">
-                  Book your <em className="text-oxblood italic">visit</em>
+                  Réservez votre <em className="text-oxblood italic">visite</em>
                 </h2>
               </div>
               <button
                 type="button"
                 onClick={closeBooking}
-                aria-label="Close booking form"
+                aria-label="Fermer le formulaire de réservation"
                 className="group flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-ink/15 bg-ivory transition-all duration-300 hover:rotate-90 hover:border-oxblood hover:text-oxblood shadow-sm"
               >
                 <X size={18} strokeWidth={1.4} />

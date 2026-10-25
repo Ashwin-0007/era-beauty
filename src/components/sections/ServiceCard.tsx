@@ -56,7 +56,7 @@ export function ServiceCard({ service, index, onBook }: ServiceCardProps) {
           type="button"
           onClick={() => onBook(service.id)}
           className="mt-6 flex items-center justify-between border-t border-ink/10 pt-4 text-left after:absolute after:inset-0 after:content-['']"
-          aria-label={`Book ${service.title}`}
+          aria-label={`Réserver ${service.title}`}
         >
           <span className="eyebrow text-mocha transition-colors duration-500 group-hover:text-oxblood font-normal">
             Explore &amp; Reserve

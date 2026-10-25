@@ -1,7 +1,7 @@
 export const site = {
   name: 'ERA Beauty',
-  tagline: 'Beauty Institute',
+  tagline: 'Institut de Beauté',
   currency: '€',
 } as const
 
-export const formatPrice = (amount: number) => `${site.currency}${amount}`
+export const formatPrice = (amount: number) => `${amount} ${site.currency}`

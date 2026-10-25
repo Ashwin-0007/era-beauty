@@ -17,16 +17,16 @@ interface RitualOption {
 }
 
 const priorities = [
-  { id: 'glow', label: 'Radiance & Glass Glow' },
-  { id: 'sculpt', label: 'Facial Sculpt & Lift' },
-  { id: 'reset', label: 'Cellular Barrier Reset' },
-  { id: 'purify', label: 'Deep Pore Clarification' },
+  { id: 'glow', label: 'Éclat & effet glass skin' },
+  { id: 'sculpt', label: 'Sculpt & lift du visage' },
+  { id: 'reset', label: 'Réparation de la barrière cutanée' },
+  { id: 'purify', label: 'Purification des pores' },
 ] as const
 
 const durations = [
-  { id: '60', label: '60 Min' },
-  { id: '90', label: '90 Min Signature' },
-  { id: '120', label: '120 Min Imperial' },
+  { id: '60', label: '60 min' },
+  { id: '90', label: '90 min Signature' },
+  { id: '120', label: '120 min Impérial' },
 ] as const
 
 type PriorityId = typeof priorities[number]['id']
@@ -35,130 +35,130 @@ type DurationId = typeof durations[number]['id']
 const protocolMatrix: Record<PriorityId, Record<DurationId, RitualOption>> = {
   glow: {
     '60': {
-      title: 'The Luminance Express',
-      subtitle: 'Oxygenating peel with triple hyaluronic infusion',
-      duration: '60 Min',
-      price: '$95',
+      title: 'L’Express Lumière',
+      subtitle: 'Peeling oxygénant et triple infusion d’acide hyaluronique',
+      duration: '60 min',
+      price: '95 €',
       serviceId: 'facials',
-      actives: ['Damask Rose Hydrosol', 'Low-Molecular HA', 'Vitamin C Ester'],
-      sensoryNote: 'Chilled quartz rollers and delicate French rose mist.',
-      description: 'An awakening treatment designed for dull skin needing immediate camera-ready bounce and high-clarity reflection.',
+      actives: ['Hydrolat de rose de Damas', 'Acide hyaluronique bas poids moléculaire', 'Ester de vitamine C'],
+      sensoryNote: 'Rouleaux de quartz rafraîchis et délicate brume de rose française.',
+      description: 'Un soin réveil pensé pour les peaux ternes, pour un rebond immédiat et un éclat parfait devant l’objectif.',
     },
     '90': {
-      title: 'The 24K Imperial Glow Protocol',
-      subtitle: 'Micro-current lymphatic drainage with 24K bio-gold mask',
-      duration: '90 Min',
-      price: '$150',
+      title: 'Le Protocole Éclat Impérial 24 carats',
+      subtitle: 'Drainage lymphatique par microcourant et masque à l’or 24 carats',
+      duration: '90 min',
+      price: '150 €',
       serviceId: 'facials',
-      actives: ['24K Colloidal Gold', 'Bio-Placenta Peptides', 'White Truffle Extract'],
-      sensoryNote: 'Warm golden botanical compresses, rhythmic pressure point shiatsu, and cryo-sculpt globes.',
-      description: 'Our most requested bridal and gala preparation ritual. Revitalizes micro-circulation and blankets skin in an undeniable lit-from-within sheen.',
+      actives: ['Or colloïdal 24 carats', 'Peptides bio-placentaires', 'Extrait de truffe blanche'],
+      sensoryNote: 'Compresses botaniques dorées et chaudes, shiatsu rythmé des points de pression et globes cryo-sculptants.',
+      description: 'Notre rituel le plus demandé avant un mariage ou un gala. Il relance la microcirculation et enveloppe la peau d’un éclat lumineux venu de l’intérieur.',
     },
     '120': {
-      title: 'The Grand Illuminating Ceremony',
-      subtitle: 'Full décolletage, hands, and facial bio-infusion ceremony',
-      duration: '120 Min',
-      price: '$210',
+      title: 'La Grande Cérémonie Illuminatrice',
+      subtitle: 'Cérémonie de bio-infusion pour le visage, le décolleté et les mains',
+      duration: '120 min',
+      price: '210 €',
       serviceId: 'facials',
-      actives: ['Rare Alpine Edelweiss', 'Stem Cell Ferment', 'Marine Collagen Pearls'],
-      sensoryNote: 'Multi-step warm botanical scalp immersion, sonic infusion, and pure silk eye compress.',
-      description: 'A transformative, unhurried sensory journey that restores youthful elasticity and porcelain luminosity across face, neck, and hands.',
+      actives: ['Edelweiss rare des Alpes', 'Ferment de cellules souches', 'Perles de collagène marin'],
+      sensoryNote: 'Immersion botanique chaude du cuir chevelu en plusieurs étapes, infusion sonique et compresse pour les yeux en pure soie.',
+      description: 'Un voyage sensoriel transformateur, tout en lenteur, qui redonne élasticité juvénile et luminosité de porcelaine au visage, au cou et aux mains.',
     },
   },
   sculpt: {
     '60': {
-      title: 'The Architecture Contour',
-      subtitle: 'Focused deep tissue facial massage with buccal techniques',
-      duration: '60 Min',
-      price: '$110',
+      title: 'Le Contour Architecture',
+      subtitle: 'Massage facial profond et ciblé avec techniques buccales',
+      duration: '60 min',
+      price: '110 €',
       serviceId: 'facials',
-      actives: ['Acetyl Hexapeptide-8', 'Ginkgo Biloba', 'Caffeine Vector'],
-      sensoryNote: 'Cooling jade contour stones and bracing botanical tonics.',
-      description: 'Sharpens jawline definition, unburdens water retention, and tones the facial musculature with high anatomical precision.',
+      actives: ['Acétyl hexapeptide-8', 'Ginkgo biloba', 'Caféine vectorisée'],
+      sensoryNote: 'Pierres de jade rafraîchissantes et lotions botaniques tonifiantes.',
+      description: 'Redessine l’ovale du visage, réduit la rétention d’eau et tonifie la musculature faciale avec une grande précision anatomique.',
     },
     '90': {
-      title: 'The Haute Sculpt Signature',
-      subtitle: 'Buccal intra-oral release, fascia lifting, and micro-current',
-      duration: '90 Min',
-      price: '$175',
+      title: 'Le Haute Sculpt Signature',
+      subtitle: 'Libération intrabuccale, lifting des fascias et microcourant',
+      duration: '90 min',
+      price: '175 €',
       serviceId: 'facials',
-      actives: ['Copper Tripeptide-1', 'Marine Bio-Elastin', 'Squalane Phytosterols'],
-      sensoryNote: 'Heated basalt stones along cervical spine and invigorating peppermint aromatics.',
-      description: 'A non-invasive architectural face-lift that releases jaw tension, lifts cheeks, and restores youthfulness to facial contours.',
+      actives: ['Tripeptide-1 de cuivre', 'Bio-élastine marine', 'Phytostérols de squalane'],
+      sensoryNote: 'Pierres de basalte chaudes le long des cervicales et arômes revigorants de menthe poivrée.',
+      description: 'Un lifting architectural non invasif qui libère les tensions de la mâchoire, rehausse les pommettes et redonne jeunesse aux contours du visage.',
     },
     '120': {
-      title: 'The Imperial Contour & Body Alignment',
-      subtitle: 'Head-to-toe myofascial release paired with high-performance sculpting',
-      duration: '120 Min',
-      price: '$240',
+      title: 'Le Contour Impérial & Alignement du Corps',
+      subtitle: 'Libération myofasciale de la tête aux pieds associée à un modelage haute performance',
+      duration: '120 min',
+      price: '240 €',
       serviceId: 'body',
-      actives: ['Bio-Identical Ceramides', 'Organic Argan Core Oil', 'Centella Asiatica'],
-      sensoryNote: 'Full body warm herbal compresses, cedarwood incense, and sound-bath harmonization.',
-      description: 'The pinnacle of restorative sculpt. Harmonizes upper postural tension with bespoke facial sculpting for total body lightness.',
+      actives: ['Céramides bio-identiques', 'Huile d’argan bio', 'Centella asiatica'],
+      sensoryNote: 'Compresses chaudes aux plantes sur tout le corps, encens de cèdre et harmonisation par bain sonore.',
+      description: 'Le summum du modelage ressourçant. Apaise les tensions posturales du haut du corps et sculpte le visage sur mesure pour une légèreté totale.',
     },
   },
   reset: {
     '60': {
-      title: 'The Barrier Calming Cocoon',
-      subtitle: 'Gentle probiotic veil with soothing chamomile infusion',
-      duration: '60 Min',
-      price: '$90',
+      title: 'Le Cocon Apaisant Barrière',
+      subtitle: 'Voile probiotique délicat et infusion apaisante de camomille',
+      duration: '60 min',
+      price: '90 €',
       serviceId: 'advanced-skin',
-      actives: ['Bifida Ferment Lysate', 'German Blue Chamomile', 'Madecassoside'],
-      sensoryNote: 'Ultra-plush velvet compresses and lavender hydro-steam.',
-      description: 'Extinguishes skin inflammation, replenishes the lipid mantle, and calms reactive or sensitized complexions.',
+      actives: ['Lysat de ferment de bifida', 'Camomille bleue allemande', 'Madécassoside'],
+      sensoryNote: 'Compresses de velours ultra-douces et vapeur de lavande.',
+      description: 'Apaise les inflammations, reconstitue le film lipidique et calme les peaux réactives ou sensibilisées.',
     },
     '90': {
-      title: 'The Cellular Restorative Infusion',
-      subtitle: 'Electroporation barrier reinforcement with bio-cellulose mask',
-      duration: '90 Min',
-      price: '$140',
+      title: 'L’Infusion Cellulaire Réparatrice',
+      subtitle: 'Renforcement de la barrière par électroporation et masque en bio-cellulose',
+      duration: '90 min',
+      price: '140 €',
       serviceId: 'advanced-skin',
-      actives: ['5-Ceramide Matrix', 'Beta-Glucan', 'Colloidal Oatmeal Micro-milled'],
-      sensoryNote: 'Chilled porcelain spoons and soothing green tea compresses.',
-      description: 'Fortifies the delicate moisture barrier against urban pollutants and harsh climates, locking in deep intercellular moisture.',
+      actives: ['Complexe de 5 céramides', 'Bêta-glucane', 'Avoine colloïdale micronisée'],
+      sensoryNote: 'Cuillères en porcelaine rafraîchies et compresses apaisantes au thé vert.',
+      description: 'Renforce la fragile barrière d’hydratation face à la pollution urbaine et aux climats rigoureux, en retenant l’hydratation au cœur de la peau.',
     },
     '120': {
-      title: 'The Complete Cellular Renewal Retreat',
-      subtitle: 'Comprehensive skin recovery with LED photo-biomodulation',
-      duration: '120 Min',
-      price: '$195',
+      title: 'La Retraite de Renouveau Cellulaire Complète',
+      subtitle: 'Réparation complète de la peau par photobiomodulation LED',
+      duration: '120 min',
+      price: '195 €',
       serviceId: 'advanced-skin',
-      actives: ['Polynucleotides (PDRN)', 'Resveratrol', 'Evening Primrose Lipids'],
-      sensoryNote: 'Red light photo-therapy cocoon, warm jasmine foot bath, and lymphatic drainage.',
-      description: 'Repairs compromised cellular structures, enhances collagen synthesis, and provides long-lasting serenity to irritated skin.',
+      actives: ['Polynucléotides (PDRN)', 'Resvératrol', 'Lipides d’onagre'],
+      sensoryNote: 'Cocon de photothérapie à la lumière rouge, bain de pieds chaud au jasmin et drainage lymphatique.',
+      description: 'Répare les structures cellulaires fragilisées, stimule la synthèse de collagène et apporte un apaisement durable aux peaux irritées.',
     },
   },
   purify: {
     '60': {
-      title: 'The Botanical Clarifying Flush',
-      subtitle: 'Sonic pore extraction with clarifying tea-tree ferment',
-      duration: '60 Min',
-      price: '$85',
+      title: 'Le Soin Purifiant Botanique',
+      subtitle: 'Extraction sonique des pores et ferment purifiant à l’arbre à thé',
+      duration: '60 min',
+      price: '85 €',
       serviceId: 'facials',
-      actives: ['Willow Bark Salicin', 'Niacinamide 5%', 'French Green Clay'],
-      sensoryNote: 'Eucalyptus steam vapor and chilled lime hydrosol.',
-      description: 'Gently clears congested follicles without drying or stripping the skin barrier, leaving a matte, refined pore texture.',
+      actives: ['Salicine d’écorce de saule', 'Niacinamide 5 %', 'Argile verte française'],
+      sensoryNote: 'Vapeur d’eucalyptus et hydrolat de citron vert rafraîchi.',
+      description: 'Désobstrue en douceur les pores sans dessécher ni agresser la barrière cutanée, pour un grain de peau mat et affiné.',
     },
     '90': {
-      title: 'The Clinical Clarifying Signature',
-      subtitle: 'Hydro-dermabrasion, high-frequency, and zinc mineral veil',
-      duration: '90 Min',
-      price: '$135',
+      title: 'Le Signature Purifiant Clinique',
+      subtitle: 'Hydrodermabrasion, haute fréquence et voile minéral au zinc',
+      duration: '90 min',
+      price: '135 €',
       serviceId: 'advanced-skin',
-      actives: ['Mandelic Acid', 'Bio-Sulfur Complex', 'Propolis Cera'],
-      sensoryNote: 'Cooling peppermint compresses and soothing blue LED canopy.',
-      description: 'A deep-level decongestion protocol that balances sebum secretion, calms breakouts, and refines uneven dermal texture.',
+      actives: ['Acide mandélique', 'Complexe de bio-soufre', 'Cire de propolis'],
+      sensoryNote: 'Compresses rafraîchissantes à la menthe poivrée et voûte apaisante de LED bleues.',
+      description: 'Un protocole de désobstruction en profondeur qui régule le sébum, apaise les imperfections et affine le grain de peau irrégulier.',
     },
     '120': {
-      title: 'The Imperial Purifying Master Ritual',
-      subtitle: 'Complete face, back, and décolleté detoxifying treatment',
-      duration: '120 Min',
-      price: '$190',
+      title: 'Le Grand Rituel Purifiant Impérial',
+      subtitle: 'Soin détoxifiant complet du visage, du dos et du décolleté',
+      duration: '120 min',
+      price: '190 €',
       serviceId: 'body',
-      actives: ['Volcanic Ash Bio-Ferment', 'Salicylic Complex', 'Rosemary Bio-Water'],
-      sensoryNote: 'Warm herbal back pack, dry body brushing, and scalp purification massage.',
-      description: 'Comprehensive total-body clearing that addresses stubborn congestion on the back, shoulders, and face with unhurried care.',
+      actives: ['Bio-ferment de cendre volcanique', 'Complexe salicylique', 'Eau florale de romarin'],
+      sensoryNote: 'Enveloppement chaud aux plantes pour le dos, brossage à sec du corps et massage purifiant du cuir chevelu.',
+      description: 'Une purification complète du corps qui traite les imperfections tenaces du dos, des épaules et du visage, avec un soin tout en lenteur.',
     },
   },
 }
@@ -179,12 +179,12 @@ export function CuratedRitualFinder() {
 
       <div className="container-x relative">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="eyebrow text-oxblood">Bespoke Protocol Concierge</p>
+          <p className="eyebrow text-oxblood">Conciergerie de protocoles sur mesure</p>
           <h2 id="curator-title" className="display mt-3 text-[2.6rem] sm:text-[3.6rem] leading-[1.08] text-ink">
-            Curate Your <em className="text-oxblood font-normal">Personal Ritual</em>
+            Composez votre <em className="text-oxblood font-normal">rituel personnel</em>
           </h2>
           <p className="mt-4 text-ink/65 text-sm sm:text-base">
-            Select your skin aspiration and available time. Our clinical algorithm calculates your ideal bespoke formulation and treatment architecture.
+            Choisissez votre objectif beauté et le temps dont vous disposez. Notre algorithme clinique détermine la formulation et le déroulé de soin idéaux pour vous.
           </p>
         </div>
 
@@ -245,7 +245,7 @@ export function CuratedRitualFinder() {
                   <span className="flex h-7 w-7 items-center justify-center rounded-full bg-oxblood/10 text-oxblood">
                     <Sparkles size={14} />
                   </span>
-                  <span className="eyebrow text-oxblood">Formulated Protocol Recommendation</span>
+                  <span className="eyebrow text-oxblood">Protocole recommandé</span>
                 </div>
                 <div className="flex items-center gap-4 text-xs tracking-wider uppercase text-ink/70">
                   <span className="flex items-center gap-1.5">
@@ -269,7 +269,7 @@ export function CuratedRitualFinder() {
                   </p>
 
                   <div className="mt-6">
-                    <p className="eyebrow text-ink/50 mb-2">Key Dermal Actives</p>
+                    <p className="eyebrow text-ink/50 mb-2">Actifs clés</p>
                     <ul className="flex flex-wrap gap-2">
                       {ritual.actives.map((active) => (
                         <li
@@ -284,15 +284,15 @@ export function CuratedRitualFinder() {
                   </div>
 
                   <p className="mt-5 text-xs text-ink/55 italic">
-                    <span className="font-medium text-ink/70">Aromatique &amp; Touch:</span> {ritual.sensoryNote}
+                    <span className="font-medium text-ink/70">Arômes &amp; toucher :</span> {ritual.sensoryNote}
                   </p>
                 </div>
 
                 <div className="md:col-span-5 flex flex-col items-center md:items-end justify-center border-t md:border-t-0 md:border-l border-ink/8 pt-6 md:pt-0 md:pl-8">
                   <div className="text-center md:text-right mb-6">
-                    <span className="text-xs uppercase tracking-[0.25em] text-ink/45 block mb-1">Estimated Investment</span>
+                    <span className="text-xs uppercase tracking-[0.25em] text-ink/45 block mb-1">Investissement estimé</span>
                     <span className="display text-4xl sm:text-5xl text-oxblood font-normal">{ritual.price}</span>
-                    <span className="text-[0.7rem] block text-ink/40 mt-1 uppercase tracking-widest">Inclusive of Private Suite</span>
+                    <span className="text-[0.7rem] block text-ink/40 mt-1 uppercase tracking-widest">Salon privé inclus</span>
                   </div>
                   <Button
                     variant="primary"
@@ -301,7 +301,7 @@ export function CuratedRitualFinder() {
                     icon={<ArrowRight size={15} strokeWidth={1.8} />}
                     onClick={() => openBooking(ritual.serviceId)}
                   >
-                    Reserve This Protocol
+                    Réserver ce protocole
                   </Button>
                 </div>
               </div>

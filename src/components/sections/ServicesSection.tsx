@@ -12,18 +12,18 @@ export function ServicesSection() {
       <div className="container-x">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow="Services"
+            eyebrow="Soins"
             id="services-title"
             title={
               <>
-                Treatments, <em className="text-oxblood">tailored</em>
-                <br className="hidden sm:block" /> to you.
+                Des soins <em className="text-oxblood">pensés</em>
+                <br className="hidden sm:block" /> pour vous.
               </>
             }
           />
           <Reveal delay={0.1} className="max-w-sm">
             <p className="text-ink/65">
-              An intentional curriculum of bespoke facial architecture, targeted resurfacing, and full-body restorative therapies curated for long-term skin health.
+              Une sélection réfléchie de soins visage sur mesure, de resurfaçage ciblé et de thérapies corporelles ressourçantes, au service de la santé durable de votre peau.
             </p>
           </Reveal>
         </div>
@@ -36,7 +36,7 @@ export function ServicesSection() {
           ))}
         </div>
         <p className="eyebrow mt-4 text-mocha/70 sm:hidden" aria-hidden>
-          Swipe to explore →
+          Faites défiler pour découvrir →
         </p>
       </div>
     </section>

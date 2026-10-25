@@ -31,12 +31,12 @@ export const todayIso = () => {
 
 export function validateAppointment(values: AppointmentRequest): AppointmentErrors {
   const errors: AppointmentErrors = {}
-  if (values.name.trim().length < 2) errors.name = 'Please enter your full name.'
+  if (values.name.trim().length < 2) errors.name = 'Veuillez saisir votre nom complet.'
   const digits = values.phone.replace(/\D/g, '')
-  if (digits.length < 7 || digits.length > 15) errors.phone = 'Please enter a valid phone number.'
-  if (!values.serviceId) errors.serviceId = 'Please choose a treatment.'
-  if (!values.date) errors.date = 'Please choose a preferred date.'
-  else if (values.date < todayIso()) errors.date = 'Please choose a date from today onwards.'
+  if (digits.length < 7 || digits.length > 15) errors.phone = 'Veuillez saisir un numéro de téléphone valide.'
+  if (!values.serviceId) errors.serviceId = 'Veuillez choisir un soin.'
+  if (!values.date) errors.date = 'Veuillez choisir une date souhaitée.'
+  else if (values.date < todayIso()) errors.date = 'Veuillez choisir une date à partir d’aujourd’hui.'
   return errors
 }
 

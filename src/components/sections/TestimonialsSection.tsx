@@ -15,17 +15,17 @@ export function TestimonialsSection() {
       <div className="container-x">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow="Guest Chronicles"
+            eyebrow="Témoignages"
             id="chronicles-title"
             title={
               <>
-                Voices of the <em className="text-oxblood">Atelier</em>
+                Les voix de l’<em className="text-oxblood">Atelier</em>
               </>
             }
           />
           <Reveal delay={0.1} className="max-w-sm">
             <p className="text-ink/65 text-sm sm:text-base">
-              Reflections from patrons who entrust their skin, face, and quiet hours to our restorative care.
+              Les impressions de clientes qui confient leur peau, leur visage et leurs moments de calme à nos soins ressourçants.
             </p>
           </Reveal>
         </div>
@@ -46,7 +46,7 @@ export function TestimonialsSection() {
                   {Array.from({ length: item.rating }).map((_, i) => (
                     <Sparkles key={i} size={14} className="fill-oxblood/20" />
                   ))}
-                  <span className="eyebrow ml-2 text-[0.65rem] text-oxblood">5.0 Signature Standard</span>
+                  <span className="eyebrow ml-2 text-[0.65rem] text-oxblood">5,0 · Standard Signature</span>
                 </div>
 
                 <p className="font-display italic text-xl sm:text-2xl text-ink leading-relaxed">

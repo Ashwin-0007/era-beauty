@@ -28,7 +28,7 @@ function Field({ id, label, error, optional, children }: FieldProps) {
     <div>
       <label htmlFor={`booking-${id}`} className="eyebrow flex justify-between text-mocha">
         {label}
-        {optional && <span className="tracking-[0.1em] normal-case text-ink/40">Optional</span>}
+        {optional && <span className="tracking-[0.1em] normal-case text-ink/40">Facultatif</span>}
       </label>
       {children}
       <AnimatePresence initial={false}>
@@ -116,10 +116,10 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
           has been prepared.
         </p>
         <p className="mt-5 border-l-2 border-oxblood/60 bg-cream/70 px-4 py-3 text-sm text-ink/75">
-          Our concierge will review your preferred date and contact you within 2 business hours to finalize your suite reservation.
+          Notre conciergerie étudiera la date souhaitée et vous contactera sous 2 heures ouvrées pour finaliser la réservation de votre salon.
         </p>
         <Button className="mt-8" onClick={onDone}>
-          Close
+          Fermer
         </Button>
       </motion.div>
     )
@@ -128,13 +128,13 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
   return (
     <form ref={formRef} noValidate onSubmit={onSubmit} className="space-y-7 pt-4">
       <p id="booking-description" className="text-ink/65">
-        Share a few details and we will confirm availability with you.
+        Partagez quelques informations et nous vous confirmerons nos disponibilités.
       </p>
 
       {status === 'error' && (
         <p role="alert" className="flex items-start gap-3 border-l-2 border-oxblood bg-oxblood/5 px-4 py-3 text-sm text-oxblood">
           <AlertCircle aria-hidden size={16} strokeWidth={1.5} className="mt-0.5 shrink-0" />
-          Something went wrong while preparing your request. Please try again.
+          Une erreur est survenue lors de la préparation de votre demande. Veuillez réessayer.
         </p>
       )}
       {submitted && Object.keys(errors).length > 0 && (
@@ -143,7 +143,7 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
         </p>
       )}
 
-      <Field id="name" label="Full name" error={errors.name}>
+      <Field id="name" label="Nom complet" error={errors.name}>
         <input
           id="booking-name"
           className="field"
@@ -152,11 +152,11 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
           onChange={update('name')}
           aria-invalid={Boolean(errors.name)}
           aria-describedby={describedBy('name')}
-          placeholder="Your name"
+          placeholder="Votre nom"
         />
       </Field>
 
-      <Field id="phone" label="Phone number" error={errors.phone}>
+      <Field id="phone" label="Numéro de téléphone" error={errors.phone}>
         <input
           id="booking-phone"
           type="tel"
@@ -171,7 +171,7 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
         />
       </Field>
 
-      <Field id="serviceId" label="Preferred treatment" error={errors.serviceId}>
+      <Field id="serviceId" label="Soin souhaité" error={errors.serviceId}>
         <SelectWrap>
         <select
           id="booking-serviceId"
@@ -181,18 +181,18 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
           aria-invalid={Boolean(errors.serviceId)}
           aria-describedby={describedBy('serviceId')}
         >
-          <option value="">Select a treatment</option>
+          <option value="">Choisir un soin</option>
           {services.map((service) => (
             <option key={service.id} value={service.id}>
               {service.title}
             </option>
           ))}
-          <option value="consultation">Not sure yet — consultation</option>
+          <option value="consultation">Je ne sais pas encore — consultation</option>
         </select></SelectWrap>
       </Field>
 
       <div className="grid gap-7 sm:grid-cols-2 sm:gap-6">
-        <Field id="date" label="Preferred date" error={errors.date}>
+        <Field id="date" label="Date souhaitée" error={errors.date}>
           <input
             id="booking-date"
             type="date"
@@ -204,25 +204,25 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
             aria-describedby={describedBy('date')}
           />
         </Field>
-        <Field id="timeOfDay" label="Time of day" optional>
+        <Field id="timeOfDay" label="Moment de la journée" optional>
           <SelectWrap>
           <select id="booking-timeOfDay" className="field appearance-none pr-8" value={values.timeOfDay} onChange={update('timeOfDay')}>
-            <option value="">No preference</option>
-            <option value="morning">Morning</option>
-            <option value="afternoon">Afternoon</option>
-            <option value="evening">Evening</option>
+            <option value="">Sans préférence</option>
+            <option value="morning">Matin</option>
+            <option value="afternoon">Après-midi</option>
+            <option value="evening">Soir</option>
           </select></SelectWrap>
         </Field>
       </div>
 
-      <Field id="notes" label="Notes" optional>
+      <Field id="notes" label="Remarques" optional>
         <textarea
           id="booking-notes"
           rows={2}
           className="field resize-none"
           value={values.notes}
           onChange={update('notes')}
-          placeholder="Skin concerns, allergies, questions…"
+          placeholder="Préoccupations cutanées, allergies, questions…"
         />
       </Field>
 
@@ -233,9 +233,9 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
         className="w-full disabled:cursor-wait disabled:opacity-70"
         icon={status === 'submitting' ? <Loader2 size={16} className="animate-spin" /> : <ArrowRight size={15} strokeWidth={1.4} />}
       >
-        {status === 'submitting' ? 'Preparing request' : 'Request Appointment'}
+        {status === 'submitting' ? 'Préparation de la demande' : 'Demander un rendez-vous'}
       </Button>
-      <p className="text-center text-xs text-ink/45">Your inquiry is treated with strict confidentiality. Concierge will confirm your suite.</p>
+      <p className="text-center text-xs text-ink/45">Votre demande est traitée en toute confidentialité. La conciergerie vous confirmera votre salon.</p>
     </form>
   )
 }

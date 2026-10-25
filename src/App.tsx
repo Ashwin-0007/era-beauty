@@ -49,7 +49,7 @@ function Site() {
         href="#main"
         className="sr-only z-[70] bg-ink px-4 py-3 text-ivory focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
       >
-        Skip to content
+        Aller au contenu
       </a>
       <Header menuOpen={menuOpen} onMenuToggle={() => setMenuOpen((open) => !open)} />
       <SideNavigation open={menuOpen} activeId={activeId} onClose={closeMenu} onNavigate={navigate} onBook={bookFromMenu} />

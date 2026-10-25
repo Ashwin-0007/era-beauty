@@ -8,10 +8,10 @@ import { Reveal } from '../ui/Reveal'
 import { SectionHeading } from '../ui/SectionHeading'
 
 const pillars = [
-  { title: 'Philosophy', text: 'Beauty that looks and feels like you — refined, healthy and quietly confident.' },
-  { title: 'Expertise', text: 'Qualified therapists who keep learning, using professional techniques and products.' },
-  { title: 'Approach', text: 'Every treatment begins with listening, so your plan is built around your skin and goals.' },
-  { title: 'Experience', text: 'An unhurried, welcoming space where every detail is designed for your comfort.' },
+  { title: 'Philosophie', text: 'Une beauté qui vous ressemble — raffinée, saine et sereinement assurée.' },
+  { title: 'Expertise', text: 'Des praticiennes diplômées en formation continue, avec des techniques et produits professionnels.' },
+  { title: 'Approche', text: 'Chaque soin commence par l’écoute, pour bâtir un programme autour de votre peau et de vos objectifs.' },
+  { title: 'Expérience', text: 'Un lieu accueillant et paisible où chaque détail est pensé pour votre confort.' },
 ]
 
 export function AboutSection() {
@@ -24,22 +24,22 @@ export function AboutSection() {
       <div className="container-x">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           <SectionHeading
-            eyebrow="The Institute"
+            eyebrow="L’Institut"
             id="institute-title"
             className="lg:col-span-6"
             title={
               <>
-                A sanctuary for <em className="text-oxblood">modern</em> skin care.
+                Un sanctuaire pour le soin <em className="text-oxblood">moderne</em> de la peau.
               </>
             }
           />
           <Reveal delay={0.15} className="self-end lg:col-span-5 lg:col-start-8">
             <p className="display text-2xl leading-snug text-ink/85 sm:text-[1.75rem]">
-              ERA Beauty brings together clinical knowledge and the art of care — treatments that respect your skin,
-              your time and the way you want to feel.
+              ERA Beauty réunit savoir clinique et art du soin — des soins qui respectent votre peau,
+              votre temps et la façon dont vous souhaitez vous sentir.
             </p>
             <p className="mt-6 text-ink/65">
-              Founded on the principle of bespoke dermal science, our suites offer private, restorative rituals designed to restore equilibrium and radiant cellular vitality through tailored protocols and sensorial mastery.
+              Fondés sur une science dermatologique sur mesure, nos salons privés proposent des rituels ressourçants pensés pour rétablir l’équilibre et une vitalité cellulaire éclatante, grâce à des protocoles personnalisés et une maîtrise sensorielle.
             </p>
           </Reveal>
         </div>
@@ -48,7 +48,7 @@ export function AboutSection() {
           <div className="col-span-12 overflow-hidden rounded-3xl shadow-luxe-lg sm:col-span-8">
             <Photo
               src={images.aboutInterior}
-              alt="Calm treatment space with natural light and plants"
+              alt="Espace de soin apaisant, baigné de lumière naturelle et de plantes"
               parallaxY={slow}
               className="aspect-[4/3] sm:aspect-[16/11]"
             />
@@ -57,7 +57,7 @@ export function AboutSection() {
             <div className="arch overflow-hidden border-[6px] border-ivory shadow-luxe-lg transition-transform duration-700 hover:scale-[1.02]">
               <Photo
                 src={images.aboutTreatment}
-                alt="Therapist performing a gentle facial treatment"
+                alt="Praticienne réalisant un soin du visage tout en douceur"
                 parallaxY={fast}
                 className="aspect-[3/4]"
               />

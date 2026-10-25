@@ -14,9 +14,9 @@ export const contact = {
   phoneHref: 'tel:+33142685500',
   email: 'concierge@erabeauty.com',
   hours: [
-    { days: 'Monday – Friday', hours: '09:00 – 19:30' },
-    { days: 'Saturday', hours: '10:00 – 18:00' },
-    { days: 'Sunday', hours: 'Private suites on request' },
+    { days: 'Lundi – Vendredi', hours: '09:00 – 19:30' },
+    { days: 'Samedi', hours: '10:00 – 18:00' },
+    { days: 'Dimanche', hours: 'Salons privés sur demande' },
   ] as OpeningHours[],
   mapEmbedUrl: '',
   directionsUrl: 'https://maps.google.com/?q=18+Place+Vendome+Paris',
