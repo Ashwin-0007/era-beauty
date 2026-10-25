@@ -1,4 +1,6 @@
-export function FilmGrainOverlay() {
+import type { JSX } from 'react'
+
+export function FilmGrainOverlay(): JSX.Element {
   return (
     <div
       aria-hidden

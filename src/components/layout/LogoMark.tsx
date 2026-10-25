@@ -1,9 +1,11 @@
+import type { JSX } from 'react'
+
 interface LogoMarkProps {
   className?: string
   accentClassName?: string
 }
 
-export function LogoMark({ className = '', accentClassName = 'text-oxblood' }: LogoMarkProps) {
+export function LogoMark({ className = '', accentClassName = 'text-oxblood' }: LogoMarkProps): JSX.Element {
   return (
     <svg viewBox="0 0 32 44" fill="none" aria-hidden className={className}>
       <g stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">

@@ -1,9 +1,11 @@
+import type { JSX } from 'react'
+
 interface MarqueeProps {
   items: string[]
   className?: string
 }
 
-export function Marquee({ items, className = '' }: MarqueeProps) {
+export function Marquee({ items, className = '' }: MarqueeProps): JSX.Element {
   const row = (hidden: boolean) => (
     <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center">
       {items.map((item) => (
