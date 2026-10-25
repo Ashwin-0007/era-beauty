@@ -11,7 +11,6 @@ import { ContactSection } from './components/sections/ContactSection'
 import { CuratedRitualFinder } from './components/sections/CuratedRitualFinder'
 import { FAQSection } from './components/sections/FAQSection'
 import { HeroSection } from './components/sections/HeroSection'
-import { PressAccolades } from './components/sections/PressAccolades'
 import { PricingSection } from './components/sections/PricingSection'
 import { ResultsSection } from './components/sections/ResultsSection'
 import { ServicesSection } from './components/sections/ServicesSection'
@@ -58,7 +57,6 @@ function Site() {
       <div className="pb-[calc(4.75rem+env(safe-area-inset-bottom))] md:pb-0">
         <main id="main">
           <HeroSection />
-          <PressAccolades />
           <AboutSection />
           <ServicesSection />
           <CuratedRitualFinder />
