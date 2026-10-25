@@ -87,7 +87,7 @@ export function SideNavigation({ open, activeId, onClose, onNavigate, onBook }: 
             <div className="grid flex-1 items-stretch lg:grid-cols-12">
               <nav aria-label="Main navigation" className="flex flex-col justify-between px-6 py-8 sm:px-12 lg:col-span-7 lg:border-r lg:border-ivory/10 lg:py-10">
                 <motion.ul variants={list} initial="closed" animate="open" exit="closed" className="space-y-1">
-                  {navItems.map((nav, index) => {
+                  {navItems.map((nav) => {
                     const active = nav.id === activeId
                     const isHovered = nav.id === hoveredSection
                     return (
@@ -105,9 +105,6 @@ export function SideNavigation({ open, activeId, onClose, onNavigate, onBook }: 
                             isHovered ? 'bg-ivory/8' : ''
                           }`}
                         >
-                          <span className="eyebrow w-6 shrink-0 text-ivory/40 transition-colors group-hover:text-champagne">
-                            {String(index + 1).padStart(2, '0')}
-                          </span>
                           <span className="relative flex-1">
                             <span
                               className={`display block text-[1.85rem] leading-none tracking-tight transition-all duration-500 ease-[var(--ease-luxe)] sm:text-4xl ${
