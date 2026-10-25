@@ -38,7 +38,7 @@ export const instituteSpaces: InstituteSpace[] = [
     tagline: 'L’élégance dès vos premiers pas',
     description:
       'Conçu sous de douces arches architecturales, notre salon d’accueil vous invite au calme immédiat. Vous y serez accueillie avec une boisson bienfaisante avant chaque protocole.',
-    image: images.reception,
+    image: images.instituteNeonArch,
     highlights: ['Arches signature en plâtre texturé', 'Bar à infusions biologiques', 'Atmosphère feutrée et parfumée'],
   },
   {
@@ -49,7 +49,7 @@ export const instituteSpaces: InstituteSpace[] = [
     tagline: 'Intimité feutrée & haute dermo-cosmétique',
     description:
       'Une cabine privative isolée du bruit extérieur, équipée d’une table chauffante ergonomique et d’éclairages réglables pour un lâcher-prise sensoriel total.',
-    image: images.instituteRoom,
+    image: images.instituteSalonHero,
     highlights: ['Table de soin chauffante à mémoire de forme', 'Luminothérapie d’ambiance', 'Diagnostic cutané haute précision'],
   },
   {

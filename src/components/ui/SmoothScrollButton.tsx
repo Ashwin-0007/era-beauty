@@ -22,7 +22,14 @@ export function SmoothScrollButton({
     if (isCurrentPage) {
       const element = document.getElementById(targetId)
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const headerOffset = window.innerWidth >= 1024 ? 112 : 96
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        })
         window.history.pushState(null, '', `#${targetId}`)
         return
       }

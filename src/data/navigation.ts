@@ -23,7 +23,7 @@ export const navItems: NavItem[] = [
       { label: 'Le lieu', to: '/institut#lieu' },
     ],
     panel: {
-      image: images.instituteRoom,
+      image: images.instituteNeonArch,
       eyebrow: 'L’institut',
       title: 'Bien plus qu’un institut, une expérience.',
       text: 'Découvrez notre histoire, notre équipe et nos valeurs.',
@@ -35,7 +35,7 @@ export const navItems: NavItem[] = [
     to: '/prestations',
     children: activeCategories.map((category) => ({ label: category.menuLabel, to: categoryPath(category.slug) })),
     panel: {
-      image: images.facialMassage,
+      image: images.facialTreatmentMockup,
       eyebrow: 'Nos prestations',
       title: 'Des soins d’exception pour révéler votre beauté.',
       text: 'Une expertise globale pour prendre soin de vous.',
@@ -50,7 +50,7 @@ export const navItems: NavItem[] = [
       { label: 'Nos packs', to: '/tarifs#packs' },
     ],
     panel: {
-      image: images.instituteTable,
+      image: images.instituteSalonHero,
       eyebrow: 'Nos tarifs',
       title: 'Des prestations accessibles pour toutes.',
       text: 'Des tarifs clairs, à la séance ou en forfait.',
@@ -66,7 +66,7 @@ export const navItems: NavItem[] = [
       { label: 'Témoignages', to: '/resultats#temoignages' },
     ],
     panel: {
-      image: images.smile,
+      image: images.lipBeforeAfterMockup,
       eyebrow: 'Des résultats réels',
       title: 'Des peaux plus nettes, plus lumineuses.',
       text: 'Découvrez les transformations réalisées dans notre institut.',

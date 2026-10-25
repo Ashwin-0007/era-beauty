@@ -3,7 +3,11 @@ const unsplash = (id: string, w = 1200) =>
 
 export const images = {
   // Institute
-  instituteHero: unsplash('1787496994867-939269b4d323', 2000),
+  instituteHero: '/images/era-salon-hero.jpg',
+  instituteSalonHero: '/images/era-salon-hero.jpg',
+  instituteNeonArch: '/images/era-arch-neon.jpg',
+  facialTreatmentMockup: '/images/era-facial-treatment.jpg',
+  lipBeforeAfterMockup: '/images/era-lip-before-after.jpg',
   reception: unsplash('1763873993447-1d0be71a96d9', 1600),
   archShelves: unsplash('1786937680099-779e1da6f7f7', 1600),
   instituteRoom: unsplash('1693578538512-fc66f318c833', 1400),

@@ -19,10 +19,20 @@ function ScrollManager() {
     // La cible peut n'exister qu'après le rendu de la page : on réessaie quelques images.
     let frames = 0
     let raf = 0
+    const id = decodeURIComponent(hash.slice(1))
     const tryScroll = () => {
-      const target = document.getElementById(decodeURIComponent(hash.slice(1)))
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      else if (frames++ < 30) raf = requestAnimationFrame(tryScroll)
+      const target = document.getElementById(id)
+      if (target) {
+        const headerOffset = window.innerWidth >= 1024 ? 112 : 96
+        const elementPosition = target.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        })
+      } else if (frames++ < 30) {
+        raf = requestAnimationFrame(tryScroll)
+      }
     }
     raf = requestAnimationFrame(tryScroll)
     return () => cancelAnimationFrame(raf)

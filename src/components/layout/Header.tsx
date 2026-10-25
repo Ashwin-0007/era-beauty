@@ -17,6 +17,25 @@ const isActive = (pathname: string, item: NavItem) => (item.to === '/' ? pathnam
 
 function MegaPanel({ item, onNavigate }: { item: NavItem; onNavigate: () => void }) {
   if (!item.children || !item.panel) return null
+  const { panel, children } = item
+
+  const handleAnchorNavigate = (to: string) => {
+    onNavigate()
+    const [path, hash] = to.split('#')
+    if (hash && (window.location.pathname === path || !path)) {
+      const element = document.getElementById(hash)
+      if (element) {
+        const headerOffset = window.innerWidth >= 1024 ? 112 : 96
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        })
+      }
+    }
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -8 }}
@@ -27,11 +46,11 @@ function MegaPanel({ item, onNavigate }: { item: NavItem; onNavigate: () => void
     >
       <div className="grid grid-cols-[1fr_1.05fr]">
         <ul className="py-5">
-          {item.children.map((child) => (
+          {children.map((child) => (
             <li key={child.to}>
               <Link
                 to={child.to}
-                onClick={onNavigate}
+                onClick={() => handleAnchorNavigate(child.to)}
                 className="flex items-center justify-between px-7 py-2.5 text-[0.68rem] tracking-[0.18em] uppercase transition-colors hover:bg-cream hover:text-oxblood"
               >
                 {child.label}
@@ -41,12 +60,12 @@ function MegaPanel({ item, onNavigate }: { item: NavItem; onNavigate: () => void
           ))}
         </ul>
         <div className="border-l border-ink/8 p-4">
-          <img src={item.panel.image} alt="" className="photo-warm h-36 w-full rounded-xl object-cover" />
-          <p className="eyebrow mt-4 text-[0.6rem] text-mocha">{item.panel.eyebrow}</p>
-          <p className="title-caps mt-1.5 text-lg">{item.panel.title}</p>
-          <p className="mt-1.5 text-xs leading-relaxed text-ink/65">{item.panel.text}</p>
-          <Link to={item.panel.cta.to} onClick={onNavigate} className="mt-3 inline-flex items-center gap-2 text-[0.62rem] tracking-[0.2em] text-oxblood uppercase hover:underline">
-            {item.panel.cta.label} <ArrowRight size={12} />
+          <img src={panel.image} alt="" className="photo-warm h-36 w-full rounded-xl object-cover" />
+          <p className="eyebrow mt-4 text-[0.6rem] text-mocha">{panel.eyebrow}</p>
+          <p className="title-caps mt-1.5 text-lg">{panel.title}</p>
+          <p className="mt-1.5 text-xs leading-relaxed text-ink/65">{panel.text}</p>
+          <Link to={panel.cta.to} onClick={() => handleAnchorNavigate(panel.cta.to)} className="mt-3 inline-flex items-center gap-2 text-[0.62rem] tracking-[0.2em] text-oxblood uppercase hover:underline">
+            {panel.cta.label} <ArrowRight size={12} />
           </Link>
         </div>
       </div>
@@ -60,6 +79,23 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { pathname } = useLocation()
   const { openBooking } = useBooking()
   useDialog(open, onClose, ref)
+
+  const handleMobileAnchor = (to: string) => {
+    onClose()
+    const [path, hash] = to.split('#')
+    if (hash && (window.location.pathname === path || !path)) {
+      const element = document.getElementById(hash)
+      if (element) {
+        const headerOffset = 96
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        })
+      }
+    }
+  }
 
   return (
     <AnimatePresence>
@@ -111,7 +147,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
                               </li>
                               {item.children.map((child) => (
                                 <li key={child.to}>
-                                  <Link to={child.to} onClick={onClose} className="block py-2.5 pl-4 text-sm text-ink/75">
+                                  <Link to={child.to} onClick={() => handleMobileAnchor(child.to)} className="block py-2.5 pl-4 text-sm text-ink/75">
                                     {child.label}
                                   </Link>
                                 </li>
