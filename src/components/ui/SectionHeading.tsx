@@ -10,7 +10,6 @@ interface SectionHeadingProps {
   className?: string
 }
 
-/** Numbered eyebrow + large serif title used to open each section. */
 export function SectionHeading({ index, eyebrow, title, id, tone = 'dark', className = '' }: SectionHeadingProps) {
   const muted = tone === 'dark' ? 'text-mocha' : 'text-champagne'
   return (

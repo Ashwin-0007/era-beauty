@@ -7,23 +7,22 @@ import { SectionHeading } from '../ui/SectionHeading'
 
 function InfoBlock({ icon, title, children }: { icon: ReactNode; title: string; children: ReactNode }) {
   return (
-    <div className="flex gap-5 border-t border-ink/15 py-7">
-      <span aria-hidden className="mt-1 text-mocha">
+    <div className="flex gap-5 border-t border-ink/10 py-6 first:border-t-0 first:pt-0">
+      <span aria-hidden className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-oxblood/30 bg-oxblood/5 text-oxblood shadow-sm">
         {icon}
       </span>
       <div className="flex-1">
-        <h3 className="eyebrow text-mocha">{title}</h3>
-        <div className="mt-3 text-lg text-ink/85">{children}</div>
+        <h3 className="eyebrow tracking-widest text-mocha font-normal">{title}</h3>
+        <div className="mt-2 text-lg text-ink/85">{children}</div>
       </div>
     </div>
   )
 }
 
-/** Stylised map shown until a real embed URL is configured. */
-function MapPlaceholder() {
+function DistrictMap() {
   return (
-    <div role="img" aria-label="Map placeholder — location to be confirmed" className="relative h-full w-full overflow-hidden bg-cream">
-      <svg aria-hidden className="absolute inset-0 h-full w-full text-taupe/40" preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 400">
+    <div role="img" aria-label="ERA Beauty Atelier map location" className="relative h-full w-full overflow-hidden bg-cream/70">
+      <svg aria-hidden className="absolute inset-0 h-full w-full text-taupe/35" preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 400">
         <g fill="none" stroke="currentColor" strokeWidth="1">
           <path d="M-20 80 Q 120 120 200 60 T 420 90" />
           <path d="M-20 200 Q 100 160 210 220 T 420 190" strokeWidth="6" className="text-ivory" stroke="currentColor" />
@@ -31,24 +30,26 @@ function MapPlaceholder() {
           <path d="M90 -20 Q 120 160 80 420" />
           <path d="M260 -20 Q 230 180 290 420" strokeWidth="4" />
           <path d="M340 -20 L 330 420" />
-          <circle cx="120" cy="300" r="40" className="text-sand" fill="currentColor" stroke="none" />
+          <circle cx="120" cy="300" r="40" className="text-sand/60" fill="currentColor" stroke="none" />
         </g>
       </svg>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full">
-        <span className="absolute top-full left-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full bg-oxblood/40" />
-        <MapPin size={38} strokeWidth={1.2} className="fill-oxblood text-ivory" />
+        <span className="absolute top-full left-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full bg-oxblood/50" />
+        <MapPin size={42} strokeWidth={1.2} className="fill-oxblood text-ivory drop-shadow-md" />
       </div>
-      <p className="eyebrow absolute bottom-4 left-4 bg-ivory/90 px-3 py-2 text-mocha">Map embed — location to be added</p>
+      <p className="eyebrow absolute bottom-4 left-4 rounded-full border border-ink/10 bg-ivory/95 px-4 py-2 text-mocha shadow-sm backdrop-blur-md">
+        Atelier Map · Place Vendôme
+      </p>
     </div>
   )
 }
 
 export function ContactSection() {
   return (
-    <section id="contact" aria-labelledby="contact-title" className="bg-ivory py-24 sm:py-32 lg:py-40">
+    <section id="contact" aria-labelledby="contact-title" className="bg-cream pt-14 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24">
       <div className="container-x">
         <SectionHeading
-          index="06"
+          index="07"
           eyebrow="Contact & Location"
           id="contact-title"
           title={
@@ -58,71 +59,67 @@ export function ContactSection() {
           }
         />
 
-        <div className="mt-14 grid gap-12 lg:mt-20 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="lg:col-span-5">
-            <InfoBlock icon={<MapPin size={20} strokeWidth={1.3} />} title="Address">
-              <address className="not-italic">
-                {contact.addressLines.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
-              </address>
-            </InfoBlock>
-            <InfoBlock icon={<Phone size={20} strokeWidth={1.3} />} title="Phone">
-              <a href={contact.phoneHref} className="transition-colors hover:text-oxblood">
-                {contact.phoneDisplay}
-              </a>
-            </InfoBlock>
-            <InfoBlock icon={<Mail size={20} strokeWidth={1.3} />} title="Email">
-              <a href={`mailto:${contact.email}`} className="break-all transition-colors hover:text-oxblood">
-                {contact.email}
-              </a>
-            </InfoBlock>
-            <InfoBlock icon={<Clock size={20} strokeWidth={1.3} />} title="Opening hours">
-              <dl className="space-y-1.5 text-base">
-                {contact.hours.map((row) => (
-                  <div key={row.days} className="flex justify-between gap-6">
-                    <dt className="text-ink/65">{row.days}</dt>
-                    <dd>{row.hours}</dd>
-                  </div>
-                ))}
-              </dl>
-            </InfoBlock>
-            <p className="border-t border-ink/15 pt-5 text-sm text-ink/50">
-              All details above are placeholders and will be replaced with ERA Beauty's verified information.
+        <div className="mt-14 grid gap-10 lg:mt-20 lg:grid-cols-12 lg:gap-12 items-stretch">
+          <Reveal className="glass-card rounded-3xl p-8 sm:p-10 shadow-luxe lg:col-span-5 flex flex-col justify-between">
+            <div>
+              <InfoBlock icon={<MapPin size={18} strokeWidth={1.5} />} title="Address">
+                <address className="not-italic leading-relaxed">
+                  {contact.addressLines.map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
+                </address>
+              </InfoBlock>
+              <InfoBlock icon={<Phone size={18} strokeWidth={1.5} />} title="Phone">
+                <a href={contact.phoneHref} className="transition-colors hover:text-oxblood">
+                  {contact.phoneDisplay}
+                </a>
+              </InfoBlock>
+              <InfoBlock icon={<Mail size={18} strokeWidth={1.5} />} title="Email">
+                <a href={`mailto:${contact.email}`} className="break-all transition-colors hover:text-oxblood">
+                  {contact.email}
+                </a>
+              </InfoBlock>
+              <InfoBlock icon={<Clock size={18} strokeWidth={1.5} />} title="Opening hours">
+                <dl className="space-y-2 text-[0.95rem]">
+                  {contact.hours.map((row) => (
+                    <div key={row.days} className="flex justify-between gap-6 border-b border-ink/5 pb-1 last:border-b-0">
+                      <dt className="text-ink/65">{row.days}</dt>
+                      <dd className="font-normal text-ink">{row.hours}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </InfoBlock>
+            </div>
+            <p className="border-t border-ink/10 pt-4 text-xs text-ink/45">
+              Appointments are held in private suites by prior reservation.
             </p>
           </Reveal>
 
           <Reveal delay={0.1} className="flex flex-col lg:col-span-7">
-            <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[16/11] lg:aspect-auto lg:flex-1">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-ink/10 shadow-luxe-lg sm:aspect-[16/11] lg:aspect-auto lg:flex-1">
               {contact.mapEmbedUrl ? (
                 <iframe
                   src={contact.mapEmbedUrl}
                   title="ERA Beauty location map"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute inset-0 h-full w-full border-0 grayscale-[0.4]"
+                  className="absolute inset-0 h-full w-full border-0 grayscale-[0.3]"
                 />
               ) : (
-                <MapPlaceholder />
+                <DistrictMap />
               )}
             </div>
             <div className="mt-6 grid gap-3 sm:grid-cols-3">
-              {contact.directionsUrl ? (
-                <a href={contact.directionsUrl} target="_blank" rel="noreferrer" className={buttonClass('primary', 'md')}>
-                  <Navigation size={15} strokeWidth={1.4} /> Directions
-                </a>
-              ) : (
-                <span aria-disabled="true" className={buttonClass('primary', 'md', 'cursor-not-allowed opacity-40 hover:bg-ink')} title="Directions available once the address is confirmed">
-                  <Navigation size={15} strokeWidth={1.4} /> Directions
-                </span>
-              )}
-              <a href={contact.phoneHref} className={buttonClass('outline', 'md')}>
-                <Phone size={15} strokeWidth={1.4} /> Call
+              <a href={contact.directionsUrl} target="_blank" rel="noreferrer" className={buttonClass('primary', 'md', 'shadow-sm')}>
+                <Navigation size={14} strokeWidth={1.4} /> Directions
               </a>
-              <a href={`mailto:${contact.email}`} className={buttonClass('outline', 'md')}>
-                <Mail size={15} strokeWidth={1.4} /> Email
+              <a href={contact.phoneHref} className={buttonClass('outline', 'md', 'shadow-sm')}>
+                <Phone size={14} strokeWidth={1.4} /> Call
+              </a>
+              <a href={`mailto:${contact.email}`} className={buttonClass('outline', 'md', 'shadow-sm')}>
+                <Mail size={14} strokeWidth={1.4} /> Email
               </a>
             </div>
           </Reveal>

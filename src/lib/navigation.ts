@@ -1,6 +1,5 @@
 import type { SectionId } from '../data/navigation'
 
-/** Smoothly scrolls to a section and keeps the URL hash in sync. */
 export function scrollToSection(id: SectionId) {
   const target = document.getElementById(id)
   if (!target) return

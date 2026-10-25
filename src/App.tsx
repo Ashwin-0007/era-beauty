@@ -8,11 +8,16 @@ import { SideNavigation } from './components/layout/SideNavigation'
 import { AboutSection } from './components/sections/AboutSection'
 import { ClosingCTA } from './components/sections/ClosingCTA'
 import { ContactSection } from './components/sections/ContactSection'
+import { CuratedRitualFinder } from './components/sections/CuratedRitualFinder'
 import { FAQSection } from './components/sections/FAQSection'
 import { HeroSection } from './components/sections/HeroSection'
+import { PressAccolades } from './components/sections/PressAccolades'
 import { PricingSection } from './components/sections/PricingSection'
 import { ResultsSection } from './components/sections/ResultsSection'
 import { ServicesSection } from './components/sections/ServicesSection'
+import { TestimonialsSection } from './components/sections/TestimonialsSection'
+import { AmbientLightFollower } from './components/ui/AmbientLightFollower'
+import { FilmGrainOverlay } from './components/ui/FilmGrainOverlay'
 import { BookingProvider, useBooking } from './context/BookingContext'
 import { navItems, type SectionId } from './data/navigation'
 import { useActiveSection } from './hooks/useActiveSection'
@@ -27,7 +32,6 @@ function Site() {
 
   const closeMenu = useCallback(() => setMenuOpen(false), [])
 
-  // Close first so the scroll lock is released, then scroll on the next frame.
   const navigate = useCallback((id: SectionId) => {
     setMenuOpen(false)
     requestAnimationFrame(() => requestAnimationFrame(() => scrollToSection(id)))
@@ -40,6 +44,8 @@ function Site() {
 
   return (
     <>
+      <FilmGrainOverlay />
+      <AmbientLightFollower />
       <a
         href="#main"
         className="sr-only z-[70] bg-ink px-4 py-3 text-ivory focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
@@ -49,14 +55,16 @@ function Site() {
       <Header menuOpen={menuOpen} onMenuToggle={() => setMenuOpen((open) => !open)} />
       <SideNavigation open={menuOpen} activeId={activeId} onClose={closeMenu} onNavigate={navigate} onBook={bookFromMenu} />
 
-      {/* Bottom padding on mobile reserves room for the fixed booking bar. */}
       <div className="pb-[calc(4.75rem+env(safe-area-inset-bottom))] md:pb-0">
         <main id="main">
           <HeroSection />
+          <PressAccolades />
           <AboutSection />
           <ServicesSection />
+          <CuratedRitualFinder />
           <PricingSection />
           <ResultsSection />
+          <TestimonialsSection />
           <ContactSection />
           <FAQSection />
           <ClosingCTA />

@@ -5,11 +5,9 @@ export interface Service {
   title: string
   summary: string
   image: string
-  /** Short keywords displayed on the card. */
   highlights: string[]
 }
 
-/** Placeholder service categories — replace with ERA Beauty's confirmed list. */
 export const services: Service[] = [
   {
     id: 'facials',

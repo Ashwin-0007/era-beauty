@@ -5,16 +5,11 @@ interface BeforeAfterSliderProps {
   before: string
   after: string
   label: string
-  /** Applies a simulated "before" look to demo imagery. */
   simulateBefore?: boolean
 }
 
 const clamp = (value: number) => Math.min(100, Math.max(0, value))
 
-/**
- * Drag (mouse/touch/pen) or use arrow keys to compare two images.
- * `touch-action: pan-y` keeps vertical page scrolling working on phones.
- */
 export function BeforeAfterSlider({ before, after, label, simulateBefore = false }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(50)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -62,9 +57,8 @@ export function BeforeAfterSlider({ before, after, label, simulateBefore = false
       onPointerMove={onPointerMove}
       onPointerUp={stopDragging}
       onPointerCancel={stopDragging}
-      className="relative aspect-[4/5] w-full cursor-ew-resize touch-pan-y overflow-hidden bg-ink-soft select-none sm:aspect-[5/4]"
+      className="relative aspect-[4/5] w-full cursor-ew-resize touch-pan-y overflow-hidden rounded-3xl border border-ivory/15 bg-ink-soft select-none shadow-2xl sm:aspect-[5/4]"
     >
-      {/* Before: full image underneath */}
       <img
         src={before}
         alt={`${label} — before`}
@@ -73,7 +67,6 @@ export function BeforeAfterSlider({ before, after, label, simulateBefore = false
         className="absolute inset-0 h-full w-full object-cover"
         style={simulateBefore ? { filter: 'saturate(0.55) contrast(0.88) brightness(0.92) sepia(0.12)' } : undefined}
       />
-      {/* After: clipped from the left edge to the handle */}
       <img
         src={after}
         alt={`${label} — after`}
@@ -83,14 +76,18 @@ export function BeforeAfterSlider({ before, after, label, simulateBefore = false
         style={{ clipPath: `inset(0 0 0 ${position}%)` }}
       />
 
-      <span className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 [writing-mode:vertical-rl] rotate-180 text-[0.7rem] tracking-[0.5em] text-ivory uppercase drop-shadow sm:left-5">
-        Before
-      </span>
-      <span className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 [writing-mode:vertical-rl] text-[0.7rem] tracking-[0.5em] text-ivory uppercase drop-shadow sm:right-5">
-        After
-      </span>
+      <div className="pointer-events-none absolute top-5 left-5 z-10">
+        <span className="rounded-full border border-ivory/25 bg-ink/65 px-4 py-1.5 text-[0.65rem] font-medium tracking-[0.25em] text-ivory/90 uppercase backdrop-blur-md shadow-md">
+          Before
+        </span>
+      </div>
+      <div className="pointer-events-none absolute top-5 right-5 z-10">
+        <span className="rounded-full border border-sand/40 bg-ink/65 px-4 py-1.5 text-[0.65rem] font-medium tracking-[0.25em] text-sand uppercase backdrop-blur-md shadow-md">
+          After
+        </span>
+      </div>
 
-      <div className="pointer-events-none absolute inset-y-0 w-px bg-ivory/90" style={{ left: `${position}%` }}>
+      <div className="pointer-events-none absolute inset-y-0 w-[2px] bg-gradient-to-b from-transparent via-sand to-transparent shadow-[0_0_12px_rgba(217,167,155,0.7)]" style={{ left: `${position}%` }}>
         <div
           role="slider"
           tabIndex={0}
@@ -100,9 +97,9 @@ export function BeforeAfterSlider({ before, after, label, simulateBefore = false
           aria-valuenow={Math.round(position)}
           aria-valuetext={`${Math.round(position)}% before shown`}
           onKeyDown={onKeyDown}
-          className="pointer-events-auto absolute top-1/2 left-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/80 bg-ink/40 text-ivory backdrop-blur-md transition-transform hover:scale-105 focus-visible:scale-105"
+          className="pointer-events-auto absolute top-1/2 left-1/2 flex h-13 w-13 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-sand/80 bg-ink/85 text-sand shadow-glow-rose backdrop-blur-lg transition-transform duration-300 hover:scale-110 focus-visible:scale-110"
         >
-          <MoveHorizontal aria-hidden size={20} strokeWidth={1.3} />
+          <MoveHorizontal aria-hidden size={18} strokeWidth={1.5} />
         </div>
       </div>
     </div>

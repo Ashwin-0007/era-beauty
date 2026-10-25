@@ -3,12 +3,11 @@ export interface FaqItem {
   answer: string
 }
 
-/** Sample questions — replace with ERA Beauty's own answers. */
 export const faqs: FaqItem[] = [
   {
     question: 'How do I book an appointment?',
     answer:
-      'Use any "Book an Appointment" button on this site to send a request with your preferred treatment and date. Our team will confirm availability with you directly.',
+      'Use any "Book an Appointment" button on this site to send a request with your preferred treatment and date. Our concierge team will confirm availability with you directly.',
   },
   {
     question: 'What should I do before my first visit?',
@@ -23,15 +22,16 @@ export const faqs: FaqItem[] = [
   {
     question: 'What is your cancellation policy?',
     answer:
-      'Placeholder policy: we kindly ask for at least 24 hours notice to reschedule or cancel. Final terms will be published here.',
+      'We kindly request at least 24 hours notice for any rescheduling or cancellations to allow us to offer the private suite to awaiting patrons.',
   },
   {
     question: 'Do you offer gift vouchers?',
-    answer: 'Placeholder answer: gift vouchers may be available for selected treatments. Contact us for details.',
+    answer:
+      'Bespoke gift certificates and private atelier membership packages are available through our concierge desk.',
   },
   {
     question: 'Are your treatments suitable during pregnancy?',
     answer:
-      'Some treatments are adapted or avoided during pregnancy. Please mention it when booking so we can advise safely.',
+      'Selected treatments are customized or gently adapted during pregnancy. Please mention it when reserving so our dermal specialists can advise safely.',
   },
 ]

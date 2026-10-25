@@ -3,7 +3,6 @@ interface MarqueeProps {
   className?: string
 }
 
-/** Endless, CSS-only ticker (paused on hover, static under reduced motion). */
 export function Marquee({ items, className = '' }: MarqueeProps) {
   const row = (hidden: boolean) => (
     <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center">

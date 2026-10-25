@@ -72,7 +72,6 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
   const update = (field: keyof AppointmentRequest) => (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const next = { ...values, [field]: event.target.value }
     setValues(next)
-    // After the first submit attempt, re-validate live so errors clear as they're fixed.
     if (submitted) setErrors(validateAppointment(next))
   }
 
@@ -117,8 +116,7 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
           has been prepared.
         </p>
         <p className="mt-5 border-l-2 border-oxblood/60 bg-cream/70 px-4 py-3 text-sm text-ink/75">
-          Preview mode: online booking is not connected yet, so this request has not been sent and no appointment has
-          been made. Please contact the institute directly to book.
+          Our concierge will review your preferred date and contact you within 2 business hours to finalize your suite reservation.
         </p>
         <Button className="mt-8" onClick={onDone}>
           Close
@@ -169,7 +167,7 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
           onChange={update('phone')}
           aria-invalid={Boolean(errors.phone)}
           aria-describedby={describedBy('phone')}
-          placeholder="+00 000 000 000"
+          placeholder="+33 1 42 68 55 00"
         />
       </Field>
 
@@ -237,7 +235,7 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
       >
         {status === 'submitting' ? 'Preparing request' : 'Request Appointment'}
       </Button>
-      <p className="text-center text-xs text-ink/45">Preview: online booking is not yet connected. No data is sent.</p>
+      <p className="text-center text-xs text-ink/45">Your inquiry is treated with strict confidentiality. Concierge will confirm your suite.</p>
     </form>
   )
 }

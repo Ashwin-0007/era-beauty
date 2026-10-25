@@ -1,7 +1,3 @@
-/**
- * Placeholder photography (Unsplash). Replace each URL with approved ERA Beauty
- * imagery when available — every component reads images from this file only.
- */
 const unsplash = (id: string, w = 1200) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=75`
 

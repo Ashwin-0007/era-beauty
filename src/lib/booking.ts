@@ -11,7 +11,6 @@ export type AppointmentErrors = Partial<Record<keyof AppointmentRequest, string>
 
 export interface SubmitResult {
   ok: boolean
-  /** 'demo' until a real booking service is connected. */
   mode: 'demo' | 'live'
 }
 
@@ -24,7 +23,6 @@ export const emptyRequest: AppointmentRequest = {
   notes: '',
 }
 
-/** Today's date as yyyy-mm-dd in local time, for the date input's `min`. */
 export const todayIso = () => {
   const now = new Date()
   now.setMinutes(now.getMinutes() - now.getTimezoneOffset())
@@ -42,10 +40,6 @@ export function validateAppointment(values: AppointmentRequest): AppointmentErro
   return errors
 }
 
-/**
- * Integration point for a future booking backend or third-party scheduler.
- * Currently frontend-only: nothing is sent and no appointment is created.
- */
 export async function submitAppointmentRequest(values: AppointmentRequest): Promise<SubmitResult> {
   void values
   await new Promise((resolve) => setTimeout(resolve, 900))

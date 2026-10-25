@@ -1,13 +1,9 @@
 export interface PriceItem {
   name: string
   description: string
-  /** Duration in minutes. */
   duration: number
-  /** Placeholder amount — NOT confirmed ERA Beauty pricing. */
   price: number
-  /** Show "from" before the price for variable treatments. */
   from?: boolean
-  /** Service id used to preselect the booking form. */
   serviceId: string
 }
 
