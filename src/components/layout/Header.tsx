@@ -182,7 +182,7 @@ export function Header() {
           transparent
             ? 'bg-transparent text-ivory'
             : // Barre crème sur téléphone, barre brune sur ordinateur (maquettes).
-              'border-b border-ink/10 bg-ivory/95 text-ink shadow-[0_6px_20px_-12px_rgba(42,30,26,0.25)] backdrop-blur-md lg:border-0 lg:bg-espresso/95 lg:text-ivory lg:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.4)]'
+              'border-b border-ink/10 bg-ivory/[0.97] text-ink shadow-[0_6px_20px_-12px_rgba(42,30,26,0.25)] lg:border-0 lg:backdrop-blur-md lg:bg-espresso/95 lg:text-ivory lg:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.4)]'
         }`}
       >
         <div className="container-x flex h-[4.5rem] items-center justify-between gap-6">
@@ -255,7 +255,7 @@ export function MobileBookingButton() {
       type="button"
       onClick={() => openBooking()}
       aria-label="Prendre rendez-vous"
-      className="fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom))] z-40 flex h-14 w-14 items-center justify-center rounded-full bg-oxblood text-ivory shadow-[0_12px_30px_-8px_rgba(110,10,40,0.6)] transition-transform active:scale-95 lg:hidden"
+      className="fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom))] z-40 flex h-14 w-14 items-center justify-center rounded-full bg-oxblood text-ivory shadow-[0_12px_30px_-8px_rgba(107,15,26,0.6)] transition-transform active:scale-95 lg:hidden"
     >
       <CalendarDays size={22} strokeWidth={1.4} />
     </button>

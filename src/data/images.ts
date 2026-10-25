@@ -34,6 +34,10 @@ export const images = {
   facialMask: unsplash('1570172619644-dfd03ed5d881', 1000),
   facialSkin: unsplash('1616394584738-fc6e612e71b9', 1000),
 
+  // Corps
+  bodyMassage: unsplash('1600334129128-685c5582fd35', 1400),
+  bodyOil: unsplash('1544161515-4ab6ce6db874', 1000),
+
   // Sourire
   smile: unsplash('1769559893692-c6d0623bf8e4', 1400),
   smileProfile: unsplash('1677026010083-78ec7f1b84ed', 1000),
@@ -47,3 +51,7 @@ export const images = {
   portrait: unsplash('1531746020798-e6953c6e8e04', 1400),
   portraitSkin: unsplash('1552693673-1bf958298935', 1200),
 } as const
+
+// Variantes de largeur pour que les téléphones chargent des photos plus légères.
+export const srcSet = (url: string) =>
+  url.includes('images.unsplash.com') ? [640, 1024, 1600, 2000].map((w) => `${url.replace(/([?&])w=\d+/, `$1w=${w}`)} ${w}w`).join(', ') : undefined

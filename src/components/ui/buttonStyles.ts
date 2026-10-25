@@ -2,7 +2,7 @@ export type Variant = 'primary' | 'outline' | 'light' | 'ghost' | 'rose'
 export type Size = 'sm' | 'md' | 'lg'
 
 const variants: Record<Variant, string> = {
-  primary: 'shimmer-hover bg-oxblood text-ivory hover:bg-bordeaux-deep hover:shadow-[0_12px_28px_-8px_rgba(110,10,40,0.55)]',
+  primary: 'shimmer-hover bg-oxblood text-ivory hover:bg-bordeaux-deep hover:shadow-[0_12px_28px_-8px_rgba(107,15,26,0.55)]',
   outline: 'border border-oxblood/60 text-oxblood bg-transparent hover:bg-oxblood hover:text-ivory',
   light: 'bg-ivory text-oxblood border border-ivory hover:bg-transparent hover:text-ivory',
   ghost: 'border border-ivory/50 text-ivory backdrop-blur-sm hover:bg-ivory hover:text-oxblood',

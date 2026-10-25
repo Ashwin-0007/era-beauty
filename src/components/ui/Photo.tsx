@@ -1,5 +1,6 @@
 import { motion, type MotionValue } from 'motion/react'
 import { useState, type ReactNode } from 'react'
+import { srcSet } from '../../data/images'
 import { luxeEase } from '../../lib/motion'
 
 interface PhotoProps {
@@ -36,6 +37,8 @@ export function Photo({
       ) : (
         <motion.img
           src={src}
+          srcSet={srcSet(src)}
+          sizes="(min-width: 1024px) 50vw, 100vw"
           alt={alt}
           loading={eager ? "eager" : "lazy"}
           decoding="async"

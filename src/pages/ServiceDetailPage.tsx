@@ -113,6 +113,7 @@ function CategoryDetail({ slug }: { slug?: string }) {
         text={category.heroDescription}
         image={category.heroImage}
         imageAlt={category.name}
+        gallery={[category.heroImage, ...category.treatments.slice(0, 2).map((treatment) => treatment.image)]}
         breadcrumb={[{ label: 'Accueil', to: '/' }, { label: 'Nos prestations', to: '/prestations' }, { label: category.name }]}
         aside={
           category.videoUrl && (

@@ -25,6 +25,7 @@ export function ServicesPage() {
         }
         subtitle="Des soins d’exception pour révéler votre beauté, avec une approche sur-mesure."
         image={images.instituteRoom}
+        gallery={[images.instituteRoom, images.reception, images.instituteHero]}
         breadcrumb={[{ label: 'Accueil', to: '/' }, { label: 'Nos prestations' }]}
         aside={
           <>

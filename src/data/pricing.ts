@@ -198,6 +198,23 @@ export const pricingSections: PriceSection[] = [
     ],
   },
   {
+    id: 'soins-corps',
+    categorySlug: 'soins-corps',
+    name: 'Soins corps',
+    subtitle: 'Tarifs des soins',
+    description: 'Des soins corps experts pour une silhouette sublimée et une détente profonde.',
+    image: images.bodyMassage,
+    tabs: [
+      {
+        label: 'Soins',
+        groups: [
+          { title: 'Massages', columns: careCols, rows: [careRow('Massage relaxant', '1h', '85 €'), careRow('Rituel aux pierres chaudes', '1h15', '105 €')] },
+          { title: 'Soins spécifiques', columns: careCols, rows: [careRow('Drainage lymphatique', '1h', '90 €'), careRow('Gommage corps', '45 min', '70 €')] },
+        ],
+      },
+    ],
+  },
+  {
     id: 'blanchiment-strass-dentaires',
     categorySlug: 'blanchiment-strass-dentaires',
     name: 'Blanchiment & strass dentaires',

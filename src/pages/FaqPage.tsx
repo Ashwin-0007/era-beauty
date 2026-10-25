@@ -131,7 +131,7 @@ export function FaqPage() {
                   to={`#${id}`}
                   className={`flex h-full flex-col items-center justify-center gap-2.5 rounded-lg border px-3 py-4 text-center text-[0.58rem] leading-snug tracking-[0.14em] uppercase transition-all duration-300 ${
                     active
-                      ? 'border-oxblood bg-oxblood text-ivory shadow-[0_10px_24px_-10px_rgba(110,10,40,0.6)]'
+                      ? 'border-oxblood bg-oxblood text-ivory shadow-[0_10px_24px_-10px_rgba(107,15,26,0.6)]'
                       : 'border-ink/10 bg-ivory text-ink/80 hover:-translate-y-0.5 hover:border-oxblood/40'
                   }`}
                 >
