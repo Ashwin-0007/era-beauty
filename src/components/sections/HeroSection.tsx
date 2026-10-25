@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
-import { ArrowDown, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useRef } from 'react'
 import { useBooking } from '../../context/BookingContext'
 import { images } from '../../data/images'
@@ -143,18 +143,6 @@ export function HeroSection() {
             </div>
           </motion.div>
         </div>
-
-        <motion.button
-          type="button"
-          onClick={() => scrollToSection('institute')}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="glass-pill absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-3 rounded-full px-5 py-2.5 text-mocha transition-all duration-300 hover:border-oxblood hover:text-oxblood lg:flex"
-        >
-          <span className="eyebrow text-[0.65rem]">Scroll to discover</span>
-          <ArrowDown size={12} strokeWidth={1.5} className="animate-bounce text-oxblood" />
-        </motion.button>
       </div>
 
       <div className="border-y border-ink/8 bg-cream/90 py-5 text-mocha shadow-inner backdrop-blur-sm">
