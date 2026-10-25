@@ -59,7 +59,7 @@ export function ServiceCard({ service, index, onBook }: ServiceCardProps) {
           aria-label={`Réserver ${service.title}`}
         >
           <span className="eyebrow text-mocha transition-colors duration-500 group-hover:text-oxblood font-normal">
-            Explore &amp; Reserve
+            Découvrir &amp; réserver
           </span>
           <span className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 bg-ivory/80 text-ink transition-all duration-500 group-hover:rotate-45 group-hover:border-oxblood group-hover:bg-oxblood group-hover:text-ivory group-hover:shadow-[0_4px_16px_-2px_rgba(183,110,121,0.5)]">
             <ArrowUpRight size={16} strokeWidth={1.4} />

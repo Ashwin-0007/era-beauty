@@ -109,11 +109,11 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
         <span className="flex h-14 w-14 items-center justify-center rounded-full bg-ink text-ivory">
           <Check size={24} strokeWidth={1.4} />
         </span>
-        <p className="display mt-6 text-3xl">Thank you, {values.name.trim().split(' ')[0]}.</p>
+        <p className="display mt-6 text-3xl">Merci, {values.name.trim().split(' ')[0]}.</p>
         <p className="mt-3 text-ink/70">
-          Your request for <strong className="font-normal text-ink">{service?.title ?? 'a treatment'}</strong> on{' '}
-          <strong className="font-normal text-ink">{new Date(`${values.date}T00:00`).toLocaleDateString(undefined, { dateStyle: 'long' })}</strong>{' '}
-          has been prepared.
+          Votre demande pour <strong className="font-normal text-ink">{service?.title ?? 'un soin'}</strong> le{' '}
+          <strong className="font-normal text-ink">{new Date(`${values.date}T00:00`).toLocaleDateString('fr-FR', { dateStyle: 'long' })}</strong>{' '}
+          a bien été préparée.
         </p>
         <p className="mt-5 border-l-2 border-oxblood/60 bg-cream/70 px-4 py-3 text-sm text-ink/75">
           Notre conciergerie étudiera la date souhaitée et vous contactera sous 2 heures ouvrées pour finaliser la réservation de votre salon.
@@ -139,7 +139,7 @@ export function BookingForm({ initialServiceId = '', onDone }: BookingFormProps)
       )}
       {submitted && Object.keys(errors).length > 0 && (
         <p role="alert" className="sr-only">
-          Please correct {Object.keys(errors).length} highlighted field(s).
+          Veuillez corriger {Object.keys(errors).length} champ(s) en surbrillance.
         </p>
       )}
 

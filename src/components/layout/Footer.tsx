@@ -116,7 +116,7 @@ export function Footer({ onNavigate }: FooterProps) {
             </div>
           </div>
 
-          <nav aria-label="Footer Navigation" className="lg:col-span-3">
+          <nav aria-label="Navigation du pied de page" className="lg:col-span-3">
             <p className="eyebrow text-champagne/90 tracking-[0.28em]">01 · Navigation</p>
             <ul className="mt-6 space-y-3.5">
               {navItems.map((nav) => (
@@ -206,7 +206,7 @@ export function Footer({ onNavigate }: FooterProps) {
 
         <div className="mt-16 flex flex-col-reverse gap-6 border-t border-ivory/10 pt-8 text-xs text-ivory/50 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {site.name}. All rights reserved. Haute Parfumerie &amp; Clinical Aesthetic Atelier.
+            © {new Date().getFullYear()} {site.name}. Tous droits réservés. Haute Parfumerie &amp; Atelier d’Esthétique Clinique.
           </p>
 
           <button

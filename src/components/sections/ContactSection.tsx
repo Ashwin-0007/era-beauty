@@ -21,7 +21,7 @@ function InfoBlock({ icon, title, children }: { icon: ReactNode; title: string; 
 
 function DistrictMap() {
   return (
-    <div role="img" aria-label="ERA Beauty Atelier map location" className="relative h-full w-full overflow-hidden bg-cream/70">
+    <div role="img" aria-label="Plan d’accès de l’Atelier ERA Beauty" className="relative h-full w-full overflow-hidden bg-cream/70">
       <svg aria-hidden className="absolute inset-0 h-full w-full text-taupe/35" preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 400">
         <g fill="none" stroke="currentColor" strokeWidth="1">
           <path d="M-20 80 Q 120 120 200 60 T 420 90" />

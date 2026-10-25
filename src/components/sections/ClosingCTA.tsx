@@ -170,7 +170,7 @@ export function ClosingCTA() {
                 onClick={() => openBooking()}
                 className="w-full shadow-luxe"
               >
-                Instant Date &amp; Time Check
+                Vérifier les disponibilités
               </Button>
             </div>
           </Reveal>
