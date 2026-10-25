@@ -41,10 +41,28 @@ export function ResultsSection() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.6, ease: luxeEase }}
               >
-                <BeforeAfterSlider before={active.before} after={active.after} label={active.title} simulateBefore={active.demo} />
+                <BeforeAfterSlider
+                  before={active.before}
+                  after={active.after}
+                  label={active.title}
+                  beforeCondition={active.beforeCondition}
+                  afterCondition={active.afterCondition}
+                  beforeFilter={active.beforeFilter}
+                  afterFilter={active.afterFilter}
+                />
               </motion.div>
             </AnimatePresence>
-            <p className="mt-4 text-sm text-ivory/50">Drag the handle, or focus it and use the arrow keys.</p>
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-ivory/60">
+              <span className="flex items-center gap-2">
+                <span className="inline-block h-2 w-2 rounded-full bg-sand/80 shadow-[0_0_8px_rgba(217,167,155,0.8)]" />
+                Drag the handle or use arrow keys to inspect the dermal transformation.
+              </span>
+              {active.metric && (
+                <span className="rounded-full border border-sand/35 bg-sand/10 px-3 py-1 font-medium tracking-wide text-sand">
+                  {active.metric}
+                </span>
+              )}
+            </div>
           </Reveal>
 
           <div className="lg:col-span-4">
