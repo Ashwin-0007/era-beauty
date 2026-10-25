@@ -12,7 +12,6 @@ export function ServicesSection() {
       <div className="container-x">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            index="03"
             eyebrow="Services"
             id="services-title"
             title={

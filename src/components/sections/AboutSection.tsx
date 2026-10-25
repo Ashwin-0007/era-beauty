@@ -24,7 +24,6 @@ export function AboutSection() {
       <div className="container-x">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           <SectionHeading
-            index="02"
             eyebrow="The Institute"
             id="institute-title"
             className="lg:col-span-6"

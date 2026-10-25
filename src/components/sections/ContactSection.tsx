@@ -49,7 +49,6 @@ export function ContactSection() {
     <section id="contact" aria-labelledby="contact-title" className="bg-cream pt-14 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24">
       <div className="container-x">
         <SectionHeading
-          index="07"
           eyebrow="Contact & Location"
           id="contact-title"
           title={

@@ -15,7 +15,6 @@ export function ResultsSection() {
       <div className="container-x">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            index="05"
             eyebrow="Results"
             id="results-title"
             tone="light"

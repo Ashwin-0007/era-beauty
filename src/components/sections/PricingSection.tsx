@@ -36,7 +36,6 @@ export function PricingSection() {
         <div className="min-w-0 lg:col-span-5">
           <div className="lg:sticky lg:top-28">
             <SectionHeading
-              index="04"
               eyebrow="Pricing"
               id="pricing-title"
               title={

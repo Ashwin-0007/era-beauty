@@ -15,7 +15,6 @@ export function TestimonialsSection() {
       <div className="container-x">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            index="06"
             eyebrow="Guest Chronicles"
             id="chronicles-title"
             title={

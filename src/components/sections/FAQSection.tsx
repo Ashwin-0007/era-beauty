@@ -34,7 +34,6 @@ export function FAQSection() {
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
             <SectionHeading
-              index="08"
               eyebrow="FAQ"
               id="faq-title"
               title={
