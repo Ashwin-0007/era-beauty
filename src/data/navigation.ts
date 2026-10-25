@@ -27,7 +27,7 @@ export const navItems: NavItem[] = [
       eyebrow: 'L’institut',
       title: 'Bien plus qu’un institut, une expérience.',
       text: 'Découvrez notre histoire, notre équipe et nos valeurs.',
-      cta: { label: 'Découvrir l’institut', to: '/institut' },
+      cta: { label: 'Découvrir notre univers', to: '/institut#lieu' },
     },
   },
   {

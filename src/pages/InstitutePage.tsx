@@ -1,4 +1,6 @@
 import { ArrowRight, Gem, HeartHandshake, Leaf, ShieldCheck } from 'lucide-react'
+import { DiscoverWorldButton } from '../components/institute/DiscoverWorldButton'
+import { TheSpaceSection } from '../components/institute/TheSpaceSection'
 import { BookButton } from '../components/ui/BookButton'
 import { ButtonLink } from '../components/ui/ButtonLink'
 import { CtaBand } from '../components/ui/CtaBand'
@@ -7,10 +9,8 @@ import { Photo } from '../components/ui/Photo'
 import { Reveal } from '../components/ui/Reveal'
 import { SectionTitle } from '../components/ui/SectionTitle'
 import { images } from '../data/images'
-import { contact } from '../data/site'
 import { usePageMeta } from '../hooks/usePageMeta'
 
-// Contenu à personnaliser : prénoms et photos de l'équipe.
 const team = [
   { role: 'Fondatrice & experte laser', text: 'Formée aux dernières technologies d’épilation, elle a imaginé ERA Beauty comme un lieu d’exception.', image: images.laserFace },
   { role: 'Spécialiste du regard', text: 'Rehaussement de cils, brow lift et teintures : un œil précis pour un résultat naturel.', image: images.lashBrowCare },
@@ -43,6 +43,7 @@ export function InstitutePage() {
         breadcrumb={[{ label: 'Accueil', to: '/' }, { label: 'L’institut' }]}
       >
         <BookButton />
+        <DiscoverWorldButton />
       </PageHero>
 
       <section id="presentation" data-anchor className="container-x grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
@@ -99,28 +100,7 @@ export function InstitutePage() {
         </ul>
       </section>
 
-      <section id="lieu" data-anchor className="bg-cream/50 py-16 lg:py-24">
-        <div className="container-x grid gap-12 lg:grid-cols-12">
-          <Reveal className="lg:col-span-4">
-            <SectionTitle number="04" eyebrow="Le lieu" title="Un cadre élégant et apaisant" />
-            <p className="mt-6 leading-relaxed text-ink/70">
-              Lumières douces, matières naturelles et cabines privatives : notre institut a été pensé comme une parenthèse de calme, au cœur de
-              Saint-Cloud.
-            </p>
-            <p className="mt-4 text-sm text-ink/70">
-              {contact.street}, {contact.city}
-            </p>
-            <ButtonLink to="/contact#localisation" variant="outline" className="mt-8" icon={<ArrowRight size={13} />}>
-              Nous rendre visite
-            </ButtonLink>
-          </Reveal>
-          <Reveal delay={0.1} className="grid grid-cols-2 gap-4 lg:col-span-8">
-            <img src={images.instituteLounge} alt="Espace détente" loading="lazy" className="photo-warm col-span-2 aspect-[16/8] w-full rounded-2xl object-cover" />
-            <img src={images.instituteTable} alt="Cabine de soin" loading="lazy" className="photo-warm aspect-[4/3] w-full rounded-2xl object-cover" />
-            <img src={images.instituteInterior} alt="Intérieur de l’institut" loading="lazy" className="photo-warm aspect-[4/3] w-full rounded-2xl object-cover" />
-          </Reveal>
-        </div>
-      </section>
+      <TheSpaceSection id="lieu" />
 
       <CtaBand
         image={images.instituteHero}
