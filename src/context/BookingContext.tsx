@@ -2,7 +2,6 @@ import { createContext, useCallback, useContext, useMemo, useState, type ReactNo
 
 interface BookingContextValue {
   isOpen: boolean
-  /** Service preselected when the modal was opened from a specific treatment. */
   serviceId: string
   openBooking: (serviceId?: string) => void
   closeBooking: () => void

@@ -1,9 +1,7 @@
 import { useEffect } from 'react'
 
-// Shared counter so nested overlays (menu → booking modal) don't unlock early.
 let lockCount = 0
 
-/** Prevents background scrolling while `active`, compensating for the scrollbar width. */
 export function useScrollLock(active: boolean) {
   useEffect(() => {
     if (!active) return

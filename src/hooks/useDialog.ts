@@ -4,10 +4,6 @@ import { useScrollLock } from './useScrollLock'
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
 
-/**
- * Modal behaviour shared by the side navigation and the booking modal:
- * scroll lock, Escape to close, focus trapping and focus restoration.
- */
 export function useDialog(open: boolean, onClose: () => void, containerRef: RefObject<HTMLElement | null>) {
   const onCloseRef = useRef(onClose)
   onCloseRef.current = onClose
@@ -18,7 +14,6 @@ export function useDialog(open: boolean, onClose: () => void, containerRef: RefO
     if (!open) return
     const previouslyFocused = document.activeElement as HTMLElement | null
 
-    // Wait a frame so the animated panel exists before moving focus into it.
     const frame = requestAnimationFrame(() => {
       const container = containerRef.current
       const target = container?.querySelector<HTMLElement>('[data-autofocus]') ?? container?.querySelector<HTMLElement>(FOCUSABLE)

@@ -3,11 +3,9 @@ import { LogoMark } from './LogoMark'
 interface WordmarkProps {
   className?: string
   size?: 'sm' | 'lg'
-  /** Colour class for the mark's sparkle. */
   accentClassName?: string
 }
 
-/** Logo lockup: arch monogram beside the ERA / BEAUTY lettering. */
 export function Wordmark({ className = '', size = 'sm', accentClassName }: WordmarkProps) {
   const large = size === 'lg'
   return (

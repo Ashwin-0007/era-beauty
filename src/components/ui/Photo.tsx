@@ -7,18 +7,12 @@ interface PhotoProps {
   alt: string
   className?: string
   imgClassName?: string
-  /** Curtain-wipe reveal when scrolled into view. */
   reveal?: boolean
-  /** Optional scroll-linked vertical offset for parallax. */
   parallaxY?: MotionValue<string>
   eager?: boolean
   curtainClassName?: string
 }
 
-/**
- * Image with a graceful fallback, an optional curtain reveal (transform only)
- * and optional parallax. The wrapper's className controls shape and size.
- */
 export function Photo({
   src,
   alt,
@@ -35,7 +29,7 @@ export function Photo({
     <div className={`relative overflow-hidden bg-sand/60 ${className}`}>
       {failed ? (
         <div role="img" aria-label={alt} className="absolute inset-0 bg-gradient-to-br from-cream via-sand to-taupe/60">
-          <span className="eyebrow absolute bottom-4 left-4 text-ink/50">Image placeholder</span>
+          <span className="eyebrow absolute bottom-4 left-4 text-ink/50">ERA Beauty Atelier</span>
         </div>
       ) : (
         <motion.img

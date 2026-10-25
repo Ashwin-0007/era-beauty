@@ -15,7 +15,6 @@ export function FAQSection() {
   const baseId = useId()
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])
 
-  // Accordion keyboard pattern: arrows / Home / End move between headers.
   const onKeyDown = (event: KeyboardEvent, index: number) => {
     const last = faqs.length - 1
     const target =
@@ -30,38 +29,42 @@ export function FAQSection() {
   }
 
   return (
-    <section id="faq" aria-labelledby="faq-title" className="bg-cream py-24 sm:py-32 lg:py-40">
+    <section id="faq" aria-labelledby="faq-title" className="bg-ivory py-16 sm:py-20 lg:py-24">
       <div className="container-x grid gap-14 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
             <SectionHeading
-              index="07"
               eyebrow="FAQ"
               id="faq-title"
               title={
                 <>
-                  Good to <em className="text-oxblood">know</em>
+                  Bon à <em className="text-oxblood">savoir</em>
                 </>
               }
             />
             <Reveal delay={0.1}>
-              <p className="mt-6 max-w-xs text-ink/65">Still wondering about something? We are happy to help before you book.</p>
+              <p className="mt-6 max-w-xs text-ink/65">Une question en suspens ? Nous serons ravis de vous aider avant votre réservation.</p>
               <Button variant="outline" className="mt-8" onClick={() => openBooking()}>
-                Request an Appointment
+                Demander un rendez-vous
               </Button>
             </Reveal>
-            <Photo src={images.faqFeature} alt="Skin care product resting on soft fabric" className="arch mt-12 hidden aspect-[3/4] w-56 lg:block" />
+            <Photo src={images.faqFeature} alt="Produit de soin posé sur un tissu doux" className="arch mt-12 hidden aspect-[3/4] w-56 lg:block" />
           </div>
         </div>
 
         <Reveal className="lg:col-span-7 lg:col-start-6">
-          <div className="border-t border-ink/15">
+          <div className="space-y-3.5">
             {faqs.map((faq, index) => {
               const open = openIndex === index
               const buttonId = `${baseId}-q${index}`
               const panelId = `${baseId}-a${index}`
               return (
-                <div key={faq.question} className="border-b border-ink/15">
+                <div
+                  key={faq.question}
+                  className={`glass-card rounded-2xl px-6 sm:px-8 transition-all duration-500 overflow-hidden ${
+                    open ? 'border-oxblood/40 bg-ivory/95 shadow-luxe' : 'border-ink/8 hover:border-ink/20 hover:bg-ivory/70'
+                  }`}
+                >
                   <h3>
                     <button
                       ref={(el) => {
@@ -73,15 +76,21 @@ export function FAQSection() {
                       aria-controls={panelId}
                       onClick={() => setOpenIndex(open ? null : index)}
                       onKeyDown={(event) => onKeyDown(event, index)}
-                      className="group flex w-full items-center gap-6 py-6 text-left sm:py-7"
+                      className="group flex w-full items-center gap-6 py-6 text-left"
                     >
-                      <span className="eyebrow w-6 shrink-0 text-mocha">{String(index + 1).padStart(2, '0')}</span>
-                      <span className={`display flex-1 text-[1.5rem] leading-snug transition-colors sm:text-[1.9rem] ${open ? 'text-oxblood' : 'group-hover:text-oxblood'}`}>
+                      <span className="eyebrow w-6 shrink-0 text-oxblood font-normal">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span className={`display flex-1 text-[1.45rem] leading-snug transition-colors sm:text-[1.8rem] ${open ? 'text-oxblood font-normal' : 'text-ink group-hover:text-oxblood'}`}>
                         {faq.question}
                       </span>
                       <span
                         aria-hidden
-                        className={`relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-colors duration-500 ${open ? 'border-oxblood bg-oxblood text-ivory' : 'border-ink/20'}`}
+                        className={`relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-500 ${
+                          open
+                            ? 'border-oxblood bg-oxblood text-ivory shadow-[0_4px_16px_-2px_rgba(183,110,121,0.5)]'
+                            : 'border-ink/15 bg-ivory text-ink group-hover:border-oxblood group-hover:text-oxblood'
+                        }`}
                       >
                         <span className="absolute h-px w-3.5 bg-current" />
                         <span className={`absolute h-px w-3.5 bg-current transition-transform duration-500 ease-[var(--ease-luxe)] ${open ? 'rotate-0' : 'rotate-90'}`} />
@@ -100,7 +109,9 @@ export function FAQSection() {
                         transition={{ duration: 0.55, ease: luxeEase }}
                         className="overflow-hidden"
                       >
-                        <p className="max-w-xl pr-4 pb-8 pl-12 text-ink/70 sm:pr-16">{faq.answer}</p>
+                        <p className="max-w-xl pb-7 pl-12 text-[0.98rem] leading-relaxed text-ink/75 sm:pr-8">
+                          {faq.answer}
+                        </p>
                       </motion.div>
                     )}
                   </AnimatePresence>

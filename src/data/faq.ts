@@ -3,35 +3,35 @@ export interface FaqItem {
   answer: string
 }
 
-/** Sample questions — replace with ERA Beauty's own answers. */
 export const faqs: FaqItem[] = [
   {
-    question: 'How do I book an appointment?',
+    question: 'Comment prendre rendez-vous ?',
     answer:
-      'Use any "Book an Appointment" button on this site to send a request with your preferred treatment and date. Our team will confirm availability with you directly.',
+      'Utilisez n’importe quel bouton « Prendre rendez-vous » de ce site pour envoyer une demande avec le soin et la date de votre choix. Notre conciergerie vous confirmera directement la disponibilité.',
   },
   {
-    question: 'What should I do before my first visit?',
+    question: 'Que dois-je faire avant ma première visite ?',
     answer:
-      'Arrive around ten minutes early so we can complete a short consultation. Please let us know about allergies, medications or recent treatments in advance.',
+      'Arrivez une dizaine de minutes en avance afin que nous puissions réaliser une courte consultation. Merci de nous signaler à l’avance toute allergie, tout traitement médical ou soin récent.',
   },
   {
-    question: 'Which treatment is right for my skin?',
+    question: 'Quel soin convient à ma peau ?',
     answer:
-      'If you are unsure, start with a consultation or our signature facial. Your therapist will assess your skin and recommend a personalised plan.',
+      'En cas de doute, commencez par une consultation ou par notre soin visage signature. Votre praticienne analysera votre peau et vous recommandera un programme personnalisé.',
   },
   {
-    question: 'What is your cancellation policy?',
+    question: 'Quelle est votre politique d’annulation ?',
     answer:
-      'Placeholder policy: we kindly ask for at least 24 hours notice to reschedule or cancel. Final terms will be published here.',
+      'Nous vous prions de nous prévenir au moins 24 heures à l’avance pour tout report ou annulation, afin de pouvoir proposer le salon privé à d’autres clientes en attente.',
   },
   {
-    question: 'Do you offer gift vouchers?',
-    answer: 'Placeholder answer: gift vouchers may be available for selected treatments. Contact us for details.',
+    question: 'Proposez-vous des cartes cadeaux ?',
+    answer:
+      'Des cartes cadeaux sur mesure et des formules d’adhésion à l’atelier privé sont disponibles auprès de notre conciergerie.',
   },
   {
-    question: 'Are your treatments suitable during pregnancy?',
+    question: 'Vos soins sont-ils adaptés pendant la grossesse ?',
     answer:
-      'Some treatments are adapted or avoided during pregnancy. Please mention it when booking so we can advise safely.',
+      'Certains soins sont personnalisés ou délicatement adaptés pendant la grossesse. Merci de le mentionner lors de votre réservation afin que nos spécialistes puissent vous conseiller en toute sécurité.',
   },
 ]

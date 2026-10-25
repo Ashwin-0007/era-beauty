@@ -5,52 +5,50 @@ export interface Service {
   title: string
   summary: string
   image: string
-  /** Short keywords displayed on the card. */
   highlights: string[]
 }
 
-/** Placeholder service categories — replace with ERA Beauty's confirmed list. */
 export const services: Service[] = [
   {
     id: 'facials',
-    title: 'Signature Facials',
-    summary: 'Tailored facial rituals that cleanse, restore and illuminate, adapted to your skin on the day.',
+    title: 'Soins Visage Signature',
+    summary: 'Des rituels visage sur mesure qui purifient, réparent et illuminent, adaptés à votre peau du jour.',
     image: images.serviceFacial,
-    highlights: ['Hydration', 'Radiance', 'Deep cleanse'],
+    highlights: ['Hydratation', 'Éclat', 'Nettoyage profond'],
   },
   {
     id: 'advanced-skin',
-    title: 'Advanced Skin Care',
-    summary: 'Targeted treatments for texture, tone and congestion, guided by a professional skin assessment.',
+    title: 'Soins Experts de la Peau',
+    summary: 'Des soins ciblés pour le grain, le teint et les imperfections, guidés par un diagnostic de peau professionnel.',
     image: images.serviceSkin,
-    highlights: ['Peels', 'Microneedling', 'Analysis'],
+    highlights: ['Peelings', 'Microneedling', 'Diagnostic'],
   },
   {
     id: 'lash-brow',
-    title: 'Lash & Brow',
-    summary: 'Precise shaping, tinting and lifting to frame the face with a soft, natural definition.',
+    title: 'Cils & Sourcils',
+    summary: 'Restructuration, teinture et rehaussement précis pour encadrer le visage avec une définition douce et naturelle.',
     image: images.serviceLashBrow,
-    highlights: ['Lash lift', 'Lamination', 'Tint'],
+    highlights: ['Rehaussement', 'Lamination', 'Teinture'],
   },
   {
     id: 'body',
-    title: 'Body Rituals',
-    summary: 'Restorative massage and body treatments designed to release tension and renew the skin.',
+    title: 'Rituels Corps',
+    summary: 'Des massages et soins du corps ressourçants, conçus pour libérer les tensions et renouveler la peau.',
     image: images.serviceBody,
-    highlights: ['Massage', 'Scrubs', 'Wraps'],
+    highlights: ['Massage', 'Gommages', 'Enveloppements'],
   },
   {
     id: 'hands-feet',
-    title: 'Hands & Feet',
-    summary: 'Meticulous manicure and pedicure care with a quiet, unhurried finish.',
+    title: 'Mains & Pieds',
+    summary: 'Manucure et pédicure méticuleuses, pour une finition sereine et sans précipitation.',
     image: images.serviceHandsFeet,
-    highlights: ['Manicure', 'Pedicure', 'Gel'],
+    highlights: ['Manucure', 'Pédicure', 'Gel'],
   },
   {
     id: 'makeup',
-    title: 'Makeup Artistry',
-    summary: 'Occasion and bridal makeup that enhances rather than conceals, built to last the day.',
+    title: 'Art du Maquillage',
+    summary: 'Un maquillage d’occasion ou de mariée qui sublime sans masquer, conçu pour tenir toute la journée.',
     image: images.serviceMakeup,
-    highlights: ['Bridal', 'Events', 'Lessons'],
+    highlights: ['Mariée', 'Événements', 'Cours'],
   },
 ]
