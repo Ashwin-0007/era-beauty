@@ -101,13 +101,6 @@ function Hero() {
       <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.2, delay: 1.6, ease: luxeEase }} className="absolute right-10 bottom-10 z-10 hidden text-ivory/80 lg:block">
         <RotatingBadge text="Beauté · Soin · Bien-être ·" className="h-28 w-28" />
       </motion.div>
-
-      <a href="#decouvrir" className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3 text-ivory/80 transition-colors hover:text-ivory">
-        <span className="eyebrow text-[0.58rem]">Scroller</span>
-        <span aria-hidden className="relative h-12 w-px overflow-hidden bg-ivory/25">
-          <span className="absolute inset-x-0 top-0 h-1/2 animate-[scroll-line_2s_ease-in-out_infinite] bg-ivory" />
-        </span>
-      </a>
     </section>
   )
 }

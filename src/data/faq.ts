@@ -1,4 +1,6 @@
-import { CalendarHeart, Eye, Gem, Leaf, Sun, Zap, type LucideIcon } from 'lucide-react'
+import { CalendarDays, Eye, Sparkles, Sun } from 'lucide-react'
+import type { ComponentType } from 'react'
+import { LotusIcon, ToothIcon, type IconProps } from '../components/ui/icons'
 
 export interface FaqItem {
   question: string
@@ -8,7 +10,7 @@ export interface FaqItem {
 export interface FaqCategory {
   id: string
   label: string
-  icon: LucideIcon
+  icon: ComponentType<IconProps>
   // Slug de la catégorie de prestations liée : la FAQ s'affiche aussi sur sa page.
   categorySlug?: string
   items: FaqItem[]
@@ -18,7 +20,7 @@ export const faqCategories: FaqCategory[] = [
   {
     id: 'questions-generales',
     label: 'Questions générales',
-    icon: CalendarHeart,
+    icon: CalendarDays,
     items: [
       {
         question: 'Comment prendre rendez-vous ?',
@@ -54,7 +56,7 @@ export const faqCategories: FaqCategory[] = [
   {
     id: 'epilation-laser',
     label: 'Épilation laser',
-    icon: Zap,
+    icon: Sparkles,
     categorySlug: 'epilation-laser',
     items: [
       {
@@ -104,7 +106,7 @@ export const faqCategories: FaqCategory[] = [
   {
     id: 'soins-visage-head-spa',
     label: 'Soins visage & Head Spa',
-    icon: Leaf,
+    icon: LotusIcon,
     categorySlug: 'soins-visage-head-spa',
     items: [
       {
@@ -120,7 +122,7 @@ export const faqCategories: FaqCategory[] = [
   {
     id: 'blanchiment-strass-dentaires',
     label: 'Blanchiment & strass dentaires',
-    icon: Gem,
+    icon: ToothIcon,
     categorySlug: 'blanchiment-strass-dentaires',
     items: [
       {
